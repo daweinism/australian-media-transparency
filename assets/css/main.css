@@ -141,9 +141,9 @@ a { color: var(--euc); }
 
 .more {
   appearance: none; border: 1px solid var(--line); background: rgba(255, 252, 247, 0.85);
-  padding: 0.4rem 0.65rem; font-size: 0.58rem; letter-spacing: 0.1em;
+  padding: 0.5rem 0.75rem; font-size: 0.62rem; letter-spacing: 0.1em;
   text-transform: uppercase; color: var(--ink-2); cursor: pointer;
-  white-space: nowrap;
+  white-space: nowrap; min-height: 2.4rem;
 }
 .more:hover { color: var(--ink); border-color: var(--ink); }
 

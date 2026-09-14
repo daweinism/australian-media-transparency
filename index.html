@@ -18,7 +18,7 @@
 <main>
 
 <!-- 01 HERO -->
-<section class="act act--hero" id="act-01" data-act="act-01" data-label="Start" style="--len:125vh;--len-m:115vh">
+<section class="act act--hero" id="act-01" data-act="act-01" data-label="Start" style="--len:118vh;--len-m:110vh">
   <div class="act__pin">
     <div class="frame frame--hero" id="f-01">
       <h1 class="hero-title">
@@ -43,15 +43,15 @@
 </section>
 
 <!-- 02 DIVERSITY -->
-<section class="act act--voices" id="act-02" data-act="act-02" data-label="Diversity" style="--len:145vh;--len-m:135vh">
+<section class="act act--voices" id="act-02" data-act="act-02" data-label="Diversity" style="--len:135vh;--len-m:125vh">
   <div class="act__pin">
     <div class="frame">
       <p class="eyebrow">Media diversity</p>
       <div class="chain chain--soft" id="path-02" aria-hidden="true">
-        <span class="is-on">People</span><i>→</i>
-        <span>Voices</span><i>→</i>
-        <span>Newsrooms</span><i>→</i>
-        <span>Public</span>
+        <span class="is-on">Person</span><i>→</i>
+        <span>Voice</span><i>→</i>
+        <span>Newsroom</span><i>→</i>
+        <span>Audience</span>
       </div>
       <div class="voices" id="voices-02"></div>
       <p class="mid" id="head-02">One voice</p>
@@ -64,7 +64,7 @@
 </section>
 
 <!-- 03 RESOURCES -->
-<section class="act" id="act-03" data-act="act-03" data-label="Resources" style="--len:130vh;--len-m:125vh">
+<section class="act act--resources" id="act-03" data-act="act-03" data-label="Resources" style="--len:120vh;--len-m:115vh">
   <div class="act__pin">
     <div class="frame">
       <p class="eyebrow">Journalism needs resources</p>
@@ -96,11 +96,16 @@
 </section>
 
 <!-- 04 2021 → 2026 -->
-<section class="act act--2021" id="act-04" data-act="act-04" data-label="2021 to 2026" style="--len:185vh;--len-m:170vh">
+<section class="act act--2021" id="act-04" data-act="act-04" data-label="2021 to 2026" style="--len:170vh;--len-m:160vh">
   <div class="act__pin">
     <div class="frame">
       <p class="big" id="year-04">2021</p>
       <p class="label" id="sub-04">News Media Bargaining Code</p>
+      <div class="morph" id="morph-04" hidden>
+        <span class="morph__a">2021 Code</span>
+        <i>→</i>
+        <span class="morph__b">2026 NBI</span>
+      </div>
       <div class="deal" id="deal-04">
         <div class="deal__side deal__side--plat">
           <div class="platform" id="plat-04">Digital<br />platform</div>
@@ -123,7 +128,7 @@
 </section>
 
 <!-- 05 HOW THE INCENTIVE WORKS -->
-<section class="act" id="act-05" data-act="act-05" data-label="How it works" style="--len:210vh;--len-m:195vh">
+<section class="act" id="act-05" data-act="act-05" data-label="How it works" style="--len:195vh;--len-m:180vh">
   <div class="act__pin">
     <div class="frame">
       <p class="eyebrow">2026 · News Bargaining Incentive</p>
@@ -180,14 +185,14 @@
 </section>
 
 <!-- 06 EIGHT GROUPS -->
-<section class="act" id="act-06" data-act="act-06" data-label="8+ groups" style="--len:160vh;--len-m:150vh">
+<section class="act" id="act-06" data-act="act-06" data-label="8+ groups" style="--len:145vh;--len-m:135vh">
   <div class="act__pin">
     <div class="frame">
       <p class="eyebrow">Who must the spending reach?</p>
-      <div class="grid8" id="grid-06"></div>
+      <div class="grid8" id="grid-06" aria-label="Eight news business groups"></div>
       <p class="big" id="count-06">1</p>
       <p class="label" id="lab-06">News business group</p>
-      <p class="explain" id="ex-06">The offset requires eligible expenditure involving at least eight Australian news business corporate groups.</p>
+      <p class="explain" id="ex-06">Eligible spending must involve at least eight Australian news business groups. The boxes show breadth of participation.</p>
     </div>
     <div class="hud">
       <span data-sources="source-nbi-02,source-nbi-03"></span>
@@ -197,20 +202,21 @@
 </section>
 
 <!-- 07 25% CAP -->
-<section class="act" id="act-07" data-act="act-07" data-label="25% cap" style="--len:150vh;--len-m:140vh">
+<section class="act" id="act-07" data-act="act-07" data-label="25% cap" style="--len:155vh;--len-m:145vh">
   <div class="act__pin">
     <div class="frame">
       <p class="eyebrow">How much can one group count for?</p>
+      <div class="cap8" id="cap8-07" aria-label="One group capped at 25 percent"></div>
       <div class="alloc" id="alloc-07">
         <div class="alloc__track">
-          <div class="alloc__one" id="one-07">One group</div>
+          <div class="alloc__one" id="one-07">Group 1</div>
           <div class="alloc__rest" id="rest-07"></div>
         </div>
-        <div class="alloc__cap"><span>0%</span><span id="restlab-07">75% for other groups</span><span>100%</span></div>
+        <div class="alloc__cap"><span>0%</span><span id="restlab-07">Other groups</span><span>100%</span></div>
       </div>
       <p class="big" id="pct-07">0%</p>
-      <p class="label" id="caplab-07">One group maximum</p>
-      <p class="explain" id="ex-07">One corporate group can account for no more than 25% of the NBI offset amount. Other groups can make up the rest.</p>
+      <p class="label" id="caplab-07">One group max</p>
+      <p class="explain" id="ex-07">A single corporate group can account for no more than 25% of the NBI offset amount. Other groups are needed for the rest.</p>
     </div>
     <div class="hud">
       <span data-sources="source-nbi-02,source-nbi-03"></span>
@@ -220,10 +226,11 @@
 </section>
 
 <!-- 08 FOLLOW THE MONEY -->
-<section class="act act--money" id="act-08" data-act="act-08" data-label="The money" style="--len:155vh;--len-m:145vh">
+<section class="act act--money" id="act-08" data-act="act-08" data-label="The money" style="--len:145vh;--len-m:135vh">
   <div class="act__pin">
     <div class="frame">
       <p class="eyebrow">Where can the money go?</p>
+      <p class="explain" id="money-ex">The system creates a charge. Support can offset it. Charge revenue can also fund news journalism payments.</p>
       <div class="pipe" id="pipe-08">
         <div class="pipe__node" data-i="0">Digital platform</div>
         <div class="pipe__arrow">↓</div>
@@ -235,7 +242,6 @@
         <div class="pipe__arrow">↓</div>
         <div class="pipe__node" data-i="4">Journalists → the public</div>
       </div>
-      <p class="explain">A policy pathway showing where support can travel.</p>
     </div>
     <div class="hud">
       <span data-sources="source-nbi-05"></span>
@@ -245,20 +251,20 @@
 </section>
 
 <!-- 09 SCALE AND DIVERSITY -->
-<section class="act" id="act-09" data-act="act-09" data-label="Scale and diversity" style="--len:125vh;--len-m:120vh">
+<section class="act" id="act-09" data-act="act-09" data-label="Scale and diversity" style="--len:115vh;--len-m:110vh">
   <div class="act__pin">
     <div class="frame">
       <p class="eyebrow">Our analysis</p>
       <div class="split">
         <div class="split__side">
           <div class="paper paper--big"><b></b><i></i><i></i><i></i></div>
-          <h3>Scale</h3>
-          <p class="stack__sub">One large organisation with substantial resources</p>
+          <h3>Capacity</h3>
+          <p class="stack__sub">A large organisation can have more resources</p>
         </div>
         <div class="split__side">
           <div class="split__many" id="many-09"></div>
-          <h3>Diversity</h3>
-          <p class="stack__sub">Many organisations and perspectives</p>
+          <h3>Range of voices</h3>
+          <p class="stack__sub">A broader ecosystem can include more organisations</p>
         </div>
       </div>
       <p class="neq">Scale and diversity measure different things</p>
@@ -271,7 +277,7 @@
 </section>
 
 <!-- 10 TRANSPARENCY → PROPOSAL -->
-<section class="act act--glass" id="act-10" data-act="act-10" data-label="Transparency" style="--len:190vh;--len-m:175vh">
+<section class="act act--glass" id="act-10" data-act="act-10" data-label="Transparency" style="--len:175vh;--len-m:165vh">
   <div class="act__pin">
     <div class="frame">
       <p class="eyebrow" id="eye-10">Where did the money go?</p>

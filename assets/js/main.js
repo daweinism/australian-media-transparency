@@ -139,11 +139,14 @@ const step = (p, n) => clamp(Math.floor(p * n), 0, n - 1);
 function initHero(el) {
   const cue = el.querySelector("#cue-01");
   const orient = el.querySelector("#orient-01");
+  const frame = el.querySelector("#f-01");
+  const pin = el.querySelector(".act__pin");
   return (p) => {
     if (cue) cue.style.opacity = String(1 - clamp(p * 2.8, 0, 1));
-    if (orient && !reduced) {
-      orient.style.transform = `scale(${1 + clamp(p, 0, 1) * 0.04})`;
-    }
+    if (reduced) return;
+    if (frame) frame.style.transform = `scale(${1 - clamp(p, 0, 1) * 0.06})`;
+    if (orient) orient.style.transform = `scale(${1 + clamp(p, 0, 1) * 0.05})`;
+    if (pin) pin.style.setProperty("--hero-dim", String(0.8 + clamp(p, 0, 1) * 0.12));
   };
 }
 
@@ -198,8 +201,15 @@ function initTimeline(el) {
   const sub = el.querySelector("#sub-04");
   const year = el.querySelector("#year-04");
   const plat = el.querySelector("#plat-04");
+  const morph = el.querySelector("#morph-04");
   return (p) => {
     const s = step(p, 5);
+    const showMorph = s >= 4;
+    deal.hidden = showMorph;
+    if (morph) {
+      morph.hidden = !showMorph;
+      morph.classList.toggle("is-on", showMorph);
+    }
     deal.classList.toggle("is-broken", s >= 2 && s < 4);
     plat.classList.toggle("platform--alert", s === 2 || s === 3);
     if (s === 0) {
@@ -225,12 +235,8 @@ function initTimeline(el) {
       ex.textContent = "Australia needed a stronger incentive for platforms to keep paying for news.";
     } else {
       year.textContent = "2026";
-      word.textContent = "Incentive";
       sub.textContent = "News Bargaining Incentive";
-      deal.classList.remove("is-broken");
-      plat.classList.remove("platform--alert");
-      ex.textContent =
-        "A new incentive for commercial deals, through a charge on very large platforms.";
+      ex.textContent = "A new incentive for commercial deals, through a charge on very large platforms.";
     }
   };
 }
@@ -277,18 +283,22 @@ function initEight(el) {
       `Group ${i + 1}`,
       i % 3 === 1 ? "paper--euc" : i % 3 === 2 ? "paper--och" : ""
     );
+    v.classList.add("is-ghost");
     grid.appendChild(v);
     return v;
   });
   return (p) => {
     const n = clamp(Math.round(p * 9), 1, 8);
-    nodes.forEach((v, i) => v.classList.toggle("is-on", i < n));
+    nodes.forEach((v, i) => {
+      v.classList.toggle("is-on", i < n);
+      v.classList.toggle("is-ghost", i >= n);
+    });
     count.textContent = n === 8 ? "8+" : String(n);
     lab.textContent = n === 1 ? "News business group" : "News business groups";
     ex.textContent =
       n < 8
-        ? "Support starts to spread across more news business groups."
-        : "The offset requires eligible expenditure involving at least eight Australian news business corporate groups.";
+        ? "Support spreads across more news business groups. Each box is a group that can be reached."
+        : "Eligible spending must involve at least eight Australian news business groups. The boxes show breadth of participation.";
   };
 }
 
@@ -299,28 +309,42 @@ function initCap(el) {
   const lab = el.querySelector("#caplab-07");
   const ex = el.querySelector("#ex-07");
   const restlab = el.querySelector("#restlab-07");
-  rest.innerHTML = Array.from({ length: 6 }, () => "<i></i>").join("");
+  const cap8 = el.querySelector("#cap8-07");
+  const tiles = Array.from({ length: 8 }, (_, i) => {
+    const d = document.createElement("div");
+    d.className = "cap8__tile";
+    d.innerHTML = `${paper(i === 0 ? "paper--och" : i % 2 ? "paper--euc" : "")}<span>Group ${i + 1}</span>`;
+    cap8.appendChild(d);
+    return d;
+  });
+  rest.innerHTML = Array.from({ length: 7 }, (_, i) => `<i title="Group ${i + 2}"></i>`).join("");
   const bars = [...rest.querySelectorAll("i")];
   return (p) => {
-    const grow = clamp(p / 0.45, 0, 1);
+    const grow = clamp(p / 0.4, 0, 1);
     const shown = Math.round(grow * 25);
     one.style.width = `${shown}%`;
-    one.textContent = shown >= 12 ? "One group" : "";
+    one.textContent = shown >= 10 ? "Group 1 · 25% max" : shown > 0 ? "Group 1" : "";
     pct.textContent = `${shown}%`;
     const capped = grow >= 1;
     lab.textContent = capped ? "One group max 25%" : "One group fills…";
+    tiles[0].classList.toggle("is-focus", shown > 0);
+    tiles[0].classList.toggle("is-capped", capped);
     const others = capped
-      ? clamp(Math.round(((p - 0.45) / 0.55) * bars.length), 0, bars.length)
+      ? clamp(Math.round(((p - 0.4) / 0.6) * bars.length), 0, bars.length)
       : 0;
     bars.forEach((b, i) => b.classList.toggle("is-on", i < others));
+    tiles.forEach((t, i) => {
+      if (i === 0) return;
+      t.classList.toggle("is-on", i <= others);
+    });
     if (restlab) restlab.style.opacity = capped ? "1" : "0.35";
     if (!capped) {
       ex.textContent = "One group tries to absorb the whole allocation.";
     } else if (others < bars.length) {
-      ex.textContent = "It stops at 25%. Other news business groups fill the rest.";
+      ex.textContent = "It stops at 25%. Other groups are needed for the remaining space.";
     } else {
       ex.textContent =
-        "One corporate group can account for no more than 25% of the NBI offset amount.";
+        "A single corporate group can account for no more than 25% of the NBI offset amount.";
     }
   };
 }
