@@ -124,6 +124,15 @@ function voiceEl(labelText, mod) {
   return d;
 }
 
+function catPillEl(labelText, mod) {
+  const d = document.createElement("div");
+  d.className = "cat-pill";
+  if (labelText === "First Nations") d.classList.add("cat-pill--wide");
+  if (labelText === "Independent") d.classList.add("cat-pill--indy");
+  d.innerHTML = `${paper(mod)}<span>${labelText}</span>`;
+  return d;
+}
+
 function fillPeople(el, n) {
   el.innerHTML = Array.from({ length: n }, () => "<i></i>").join("");
 }
@@ -152,6 +161,7 @@ function initHero(el) {
 
 function initVoices(el) {
   const wrap = el.querySelector("#voices-02");
+  const strip = el.querySelector("#cats-02");
   const head = el.querySelector("#head-02");
   const ex = el.querySelector("#ex-02");
   const path = [...el.querySelectorAll("#path-02 span")];
@@ -167,14 +177,19 @@ function initVoices(el) {
   const nodes = cats.map(([t, m]) => {
     const v = voiceEl(t, m);
     wrap.appendChild(v);
-    return v;
+    const pill = catPillEl(t, m);
+    strip.appendChild(pill);
+    return { voice: v, pill };
   });
   return (p) => {
     const pathN = clamp(Math.round(clamp(p / 0.25, 0, 1) * path.length), 1, path.length);
     path.forEach((s, i) => s.classList.toggle("is-on", i < pathN));
 
     const shown = clamp(Math.round(clamp((p - 0.15) / 0.85, 0, 1) * 8), 1, nodes.length);
-    nodes.forEach((n, i) => n.classList.toggle("is-on", i < shown));
+    nodes.forEach((n, i) => {
+      n.voice.classList.toggle("is-on", i < shown);
+      n.pill.classList.toggle("is-on", i < shown);
+    });
     if (shown <= 1) {
       head.textContent = "One voice";
       ex.textContent = "Start with a single newsroom.";
@@ -244,6 +259,7 @@ function initTimeline(el) {
 function initMechanism(el) {
   const story = el.querySelector("#story-05");
   const fill = el.querySelector("#fill-05");
+  const fillM = el.querySelector("#fill-05m");
   const head = el.querySelector("#head-05");
   const ex = el.querySelector("#ex-05");
   const v = el.querySelector("#v-05a");
@@ -259,10 +275,11 @@ function initMechanism(el) {
       ex.textContent = "Only platforms with more than $250 million in Australian digital ad revenue.";
       const w = 8 + clamp(p / 0.33, 0, 1) * 78;
       fill.style.width = `${w}%`;
+      if (fillM) fillM.style.height = `${w}%`;
       v.textContent =
         w > 62
-          ? "Above this line, the News Bargaining Incentive applies."
-          : "Below this line, the charge does not apply.";
+          ? "NBI applies above this level."
+          : "Below this level, the charge does not apply.";
     } else if (pane === 1) {
       head.textContent = "What is the charge?";
       ex.textContent = "A percentage of that Australian digital ad revenue.";

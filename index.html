@@ -43,7 +43,7 @@
 </section>
 
 <!-- 02 DIVERSITY -->
-<section class="act act--voices" id="act-02" data-act="act-02" data-label="Diversity" style="--len:135vh;--len-m:125vh">
+<section class="act act--voices" id="act-02" data-act="act-02" data-label="Diversity" style="--len:125vh;--len-m:115vh">
   <div class="act__pin">
     <div class="frame">
       <p class="eyebrow">Media diversity</p>
@@ -53,7 +53,10 @@
         <span>Newsroom</span><i>→</i>
         <span>Audience</span>
       </div>
-      <div class="voices" id="voices-02"></div>
+      <div class="cat-strip-wrap" aria-label="Types of news coverage">
+        <div class="cat-strip" id="cats-02"></div>
+      </div>
+      <div class="voices voices--desk" id="voices-02"></div>
       <p class="mid" id="head-02">One voice</p>
       <p class="explain" id="ex-02">Different communities bring different stories and priorities.</p>
     </div>
@@ -128,7 +131,7 @@
 </section>
 
 <!-- 05 HOW THE INCENTIVE WORKS -->
-<section class="act" id="act-05" data-act="act-05" data-label="How it works" style="--len:195vh;--len-m:180vh">
+<section class="act" id="act-05" data-act="act-05" data-label="How it works" style="--len:185vh;--len-m:165vh">
   <div class="act__pin">
     <div class="frame">
       <p class="eyebrow">2026 · News Bargaining Incentive</p>
@@ -137,9 +140,9 @@
 
       <div class="story" id="story-05">
         <div class="story__pane is-on" data-pane="0">
-          <div class="thresh">
+          <div class="thresh thresh--desk">
             <div class="thresh__scale" aria-hidden="true">
-              <span>$0</span><span>$100M</span><span>$200M</span><span class="is-mark">$250M+</span><span>$300M+</span>
+              <span>$0M</span><span class="is-ghost">$100M</span><span class="is-ghost">$200M</span><span class="is-mark">$250M+</span><span>$300M+</span>
             </div>
             <div class="thresh__track">
               <div class="thresh__fill" id="fill-05"></div>
@@ -147,9 +150,22 @@
             </div>
             <div class="thresh__row"><span>Below threshold</span><span>Above threshold</span></div>
           </div>
+          <div class="thresh thresh--mob">
+            <p class="label">Digital ad revenue</p>
+            <div class="thresh-v">
+              <div class="thresh-v__rail">
+                <div class="thresh-v__fill" id="fill-05m"></div>
+              </div>
+              <div class="thresh-v__labels">
+                <span class="thresh-v__tick">$0M</span>
+                <span class="thresh-v__tick is-mark">$250M+</span>
+                <span class="thresh-v__tick">$300M+</span>
+              </div>
+            </div>
+          </div>
           <p class="big num-sm">$250M+</p>
           <p class="label">Revenue threshold</p>
-          <p class="explain" id="v-05a">Relevant Australian digital ad revenue. Above this line, the News Bargaining Incentive applies.</p>
+          <p class="explain" id="v-05a">NBI applies above this level for relevant Australian digital ad revenue.</p>
         </div>
 
         <div class="story__pane" data-pane="1">
@@ -229,7 +245,7 @@
 </section>
 
 <!-- 08 WHERE CAN THE MONEY GO? -->
-<section class="act act--money" id="act-08" data-act="act-08" data-label="The money" style="--len:155vh;--len-m:145vh">
+<section class="act act--money" id="act-08" data-act="act-08" data-label="The money" style="--len:150vh;--len-m:135vh">
   <div class="act__pin">
     <div class="frame">
       <p class="eyebrow">Where can the money go?</p>
@@ -246,15 +262,27 @@
         <div class="fork__paths">
           <div class="fork__path fork__path--a" data-i="1">
             <p class="fork__tag">Path A</p>
+            <div class="fork__steps">
+              <span class="fork__ico platform">Platform</span>
+              <i>→</i>
+              <span class="fork__ico paper paper--euc">News</span>
+              <i>→</i>
+              <span class="fork__ico fork__ico--end">Offset</span>
+            </div>
             <strong>Qualifying news support</strong>
-            <small>Spending that counts can offset the charge</small>
-            <span class="fork__end">Charge offset</span>
+            <small>Spending that counts can reduce the charge</small>
           </div>
           <div class="fork__path fork__path--b" data-i="2">
             <p class="fork__tag">Path B</p>
+            <div class="fork__steps">
+              <span class="fork__ico platform">Platform</span>
+              <i>→</i>
+              <span class="fork__ico fork__ico--pay">Pay</span>
+              <i>→</i>
+              <span class="fork__ico fork__ico--end fork__ico--wide">News payments</span>
+            </div>
             <strong>Charge collected</strong>
             <small>Goes to the News Journalism Payments Scheme</small>
-            <span class="fork__end">Eligible participants</span>
           </div>
         </div>
       </div>
@@ -293,7 +321,7 @@
 </section>
 
 <!-- 10 TRANSPARENCY → PROPOSAL -->
-<section class="act act--glass" id="act-10" data-act="act-10" data-label="Transparency" style="--len:175vh;--len-m:165vh">
+<section class="act act--glass" id="act-10" data-act="act-10" data-label="Transparency" style="--len:170vh;--len-m:155vh">
   <div class="act__pin">
     <div class="frame">
       <p class="eyebrow" id="eye-10">Where did the money go?</p>
