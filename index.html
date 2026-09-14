@@ -138,15 +138,18 @@
       <div class="story" id="story-05">
         <div class="story__pane is-on" data-pane="0">
           <div class="thresh">
+            <div class="thresh__scale" aria-hidden="true">
+              <span>$0</span><span>$100M</span><span>$200M</span><span class="is-mark">$250M+</span><span>$300M+</span>
+            </div>
             <div class="thresh__track">
               <div class="thresh__fill" id="fill-05"></div>
-              <div class="thresh__mark"><span>$250M</span></div>
+              <div class="thresh__mark" aria-hidden="true"></div>
             </div>
             <div class="thresh__row"><span>Below threshold</span><span>Above threshold</span></div>
           </div>
           <p class="big num-sm">$250M+</p>
-          <p class="label">Australian digital ad revenue</p>
-          <p class="explain" id="v-05a">Above this line, the News Bargaining Incentive applies.</p>
+          <p class="label">Revenue threshold</p>
+          <p class="explain" id="v-05a">Relevant Australian digital ad revenue. Above this line, the News Bargaining Incentive applies.</p>
         </div>
 
         <div class="story__pane" data-pane="1">
@@ -225,22 +228,35 @@
   </div>
 </section>
 
-<!-- 08 FOLLOW THE MONEY -->
-<section class="act act--money" id="act-08" data-act="act-08" data-label="The money" style="--len:145vh;--len-m:135vh">
+<!-- 08 WHERE CAN THE MONEY GO? -->
+<section class="act act--money" id="act-08" data-act="act-08" data-label="The money" style="--len:155vh;--len-m:145vh">
   <div class="act__pin">
     <div class="frame">
       <p class="eyebrow">Where can the money go?</p>
-      <p class="explain" id="money-ex">The system creates a charge. Support can offset it. Charge revenue can also fund news journalism payments.</p>
-      <div class="pipe" id="pipe-08">
-        <div class="pipe__node" data-i="0">Digital platform</div>
-        <div class="pipe__arrow">↓</div>
-        <div class="pipe__node" data-i="1">Qualifying news support <em>or</em> charge</div>
-        <div class="pipe__arrow">↓</div>
-        <div class="pipe__node" data-i="2">News Journalism Payment Scheme</div>
-        <div class="pipe__arrow">↓</div>
-        <div class="pipe__node" data-i="3">Eligible news organisations</div>
-        <div class="pipe__arrow">↓</div>
-        <div class="pipe__node" data-i="4">Journalists → the public</div>
+      <p class="explain" id="money-ex">The system creates a charge. Qualifying news support can offset it. Revenue collected through the charge can also fund news journalism payments.</p>
+
+      <div class="fork" id="fork-08">
+        <div class="fork__top" data-i="0">
+          <strong>Digital platform</strong>
+          <span>NBI charge</span>
+        </div>
+        <div class="fork__split" aria-hidden="true">
+          <i></i><i></i>
+        </div>
+        <div class="fork__paths">
+          <div class="fork__path fork__path--a" data-i="1">
+            <p class="fork__tag">Path A</p>
+            <strong>Qualifying news support</strong>
+            <small>Spending that counts can offset the charge</small>
+            <span class="fork__end">Charge offset</span>
+          </div>
+          <div class="fork__path fork__path--b" data-i="2">
+            <p class="fork__tag">Path B</p>
+            <strong>Charge collected</strong>
+            <small>Goes to the News Journalism Payments Scheme</small>
+            <span class="fork__end">Eligible participants</span>
+          </div>
+        </div>
       </div>
     </div>
     <div class="hud">
@@ -267,7 +283,7 @@
           <p class="stack__sub">A broader ecosystem can include more organisations</p>
         </div>
       </div>
-      <p class="neq">Scale and diversity measure different things</p>
+      <p class="neq">Scale and diversity describe different things</p>
       <p class="explain">More money can support journalism. More participants can broaden perspectives.</p>
     </div>
     <div class="hud">
@@ -295,7 +311,7 @@
             <div class="box__lid" id="lid-10"><span>Money</span><span style="font-size:1.5rem">?</span></div>
           </div>
           <p class="label" id="translab-10">Right now, much of this is not public</p>
-          <p class="explain" id="ex-10">Publishing a number helps. Publishing how the number was calculated makes it easier to check.</p>
+          <p class="explain" id="ex-10">Publishing the amount helps. Showing how it was calculated makes it easier to check.</p>
         </div>
 
         <div class="story__pane" data-pane="1">

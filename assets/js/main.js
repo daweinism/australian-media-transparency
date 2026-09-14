@@ -72,18 +72,18 @@ const DETAILS = {
   },
   money: {
     badge: "How it works",
-    title: "Where the money can go",
-    lead: "Two routes exist under the framework.",
+    title: "Two different pathways",
+    lead: "The system creates a charge. Qualifying news support can offset it. Revenue collected through the charge can also fund news journalism payments.",
     paras: [
-      "Money spent directly on Australian news goes to news businesses under commercial arrangements.",
-      "Charge money goes to the Commonwealth and is directed to the News Journalism Payment Scheme.",
-      "What is not routinely published is the detail: which publishers received what, and how those amounts were decided.",
+      "Path A: qualifying spending on Australian news businesses can reduce what a platform pays.",
+      "Path B: charge that is actually collected goes to the Commonwealth and can be distributed through the News Journalism Payments Scheme to eligible participants.",
+      "These are different parts of the framework. Qualifying news support is a separate route from payments under the scheme.",
     ],
-    takeaway: "The pathway is clear. The public detail of who received what is still limited.",
+    takeaway: "Offset spending and charge revenue travel through different pathways.",
   },
   outcome: {
     badge: "Our analysis",
-    title: "Scale and diversity measure different things",
+    title: "Scale and diversity describe different things",
     lead: "The eight-group minimum and 25% cap widen participation compared with a small set of private deals.",
     paras: [
       "They still leave open whether support reaches regional, community, First Nations or independent newsrooms.",
@@ -97,9 +97,9 @@ const DETAILS = {
     lead: "Commercial arrangements and offset calculations are typically not public.",
     paras: [
       "Without published amounts, recipients, allocation methods and independent checking, no one can test whether a diversity objective is being met.",
-      "Publishing a number helps. Publishing how the number was calculated, and who checked it, makes disclosure stronger.",
+      "Publishing the amount helps. Showing how it was calculated makes it easier to check.",
     ],
-    takeaway: "Disclosure becomes stronger when people can verify it.",
+    takeaway: "Accountability depends on information that can be checked.",
   },
   proposal: {
     badge: "Our proposal",
@@ -349,14 +349,28 @@ function initCap(el) {
   };
 }
 
-function sequence(el, selector, { cumulative = false } = {}) {
-  const items = [...el.querySelectorAll(selector)];
+function initFork(el) {
+  const fork = el.querySelector("#fork-08");
+  const top = fork.querySelector(".fork__top");
+  const pathA = fork.querySelector(".fork__path--a");
+  const pathB = fork.querySelector(".fork__path--b");
+  const ex = el.querySelector("#money-ex");
   return (p) => {
-    const active = clamp(Math.round(p * (items.length + 0.35)), 0, items.length - 1);
-    items.forEach((n, i) => {
-      n.classList.toggle("is-on", cumulative ? i <= active : i === active);
-      n.classList.toggle("is-past", !cumulative && i < active);
-    });
+    const s = step(p, 3);
+    top.classList.toggle("is-on", s >= 0);
+    fork.classList.toggle("is-split", s >= 1);
+    pathA.classList.toggle("is-on", s >= 1);
+    pathB.classList.toggle("is-on", s >= 2);
+    if (s === 0) {
+      ex.textContent =
+        "The system creates a charge. Qualifying news support can offset it. Revenue collected through the charge can also fund news journalism payments.";
+    } else if (s === 1) {
+      ex.textContent =
+        "Path A: qualifying news support can reduce what the platform pays.";
+    } else {
+      ex.textContent =
+        "Path B: charge that is collected can fund the News Journalism Payments Scheme for eligible participants.";
+    }
   };
 }
 
@@ -409,13 +423,13 @@ function initTransparency(el) {
       if (p < 0.18) {
         lab.textContent = "Right now, much of this is not public";
         ex.textContent =
-          "Publishing a number helps. Publishing how the number was calculated makes it easier to check.";
+          "Publishing the amount helps. Showing how it was calculated makes it easier to check.";
       } else if (n < rows.length) {
         lab.textContent = "What transparency would show";
         ex.textContent = "Amount, recipient, allocation, method, and who checked it.";
       } else {
-        lab.textContent = "Disclosure → verification → accountability";
-        ex.textContent = "Disclosure becomes stronger when people can verify it.";
+        lab.textContent = "Disclosure → check → verify → account";
+        ex.textContent = "Accountability depends on information that can be checked.";
       }
     } else {
       eye.textContent = "Our proposal";
@@ -477,7 +491,7 @@ async function main() {
     ["act-05", initMechanism],
     ["act-06", initEight],
     ["act-07", initCap],
-    ["act-08", (el) => sequence(el, "#pipe-08 .pipe__node")],
+    ["act-08", initFork],
     ["act-09", initSplit],
     ["act-10", initTransparency],
     ["act-11", initFinale],
