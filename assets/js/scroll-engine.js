@@ -1,85 +1,70 @@
 /**
- * Scroll-state engine — chapter nav + continuous progress for short hero only.
+ * Lightweight progress tracker for sticky acts.
  */
 export class ScrollEngine {
   constructor({ reducedMotion = false } = {}) {
     this.reducedMotion = reducedMotion;
-    this.scenes = new Map();
-    this.activeChapter = null;
-    this._chapterRaf = null;
-    this._chapterCallbacks = [];
+    this.acts = new Map();
+    this.active = null;
+    this._onAct = [];
   }
 
-  onChapter(cb) {
-    this._chapterCallbacks.push(cb);
+  onAct(cb) {
+    this._onAct.push(cb);
   }
 
-  registerScene(id, el, { onProgress } = {}) {
-    this.scenes.set(id, { el, onProgress });
+  register(id, el, onProgress) {
+    this.acts.set(id, { el, onProgress });
   }
 
   start() {
-    this._observeChapters();
-    this._bindProgressLoop();
-  }
-
-  _observeChapters() {
-    const chapters = [...document.querySelectorAll("[data-chapter]")];
-    const update = () => {
-      const mid = window.innerHeight * 0.32;
+    const nodes = [...document.querySelectorAll("[data-act]")];
+    const syncAct = () => {
+      const mid = window.innerHeight * 0.3;
       let best = null;
-      let bestDist = Infinity;
-      chapters.forEach((c) => {
-        const r = c.getBoundingClientRect();
+      let dist = Infinity;
+      nodes.forEach((n) => {
+        const r = n.getBoundingClientRect();
         if (r.bottom < 0 || r.top > window.innerHeight) return;
-        const center = r.top + Math.min(r.height, window.innerHeight) * 0.2;
-        const dist = Math.abs(center - mid);
-        if (dist < bestDist) {
-          bestDist = dist;
-          best = c.getAttribute("data-chapter");
+        const c = r.top + Math.min(r.height, window.innerHeight) * 0.2;
+        const d = Math.abs(c - mid);
+        if (d < dist) {
+          dist = d;
+          best = n.getAttribute("data-act");
         }
       });
-      if (best && best !== this.activeChapter) {
-        this.activeChapter = best;
-        this._chapterCallbacks.forEach((cb) => cb(best));
+      if (best && best !== this.active) {
+        this.active = best;
+        this._onAct.forEach((cb) => cb(best));
       }
     };
-    window.addEventListener(
-      "scroll",
-      () => {
-        if (this._chapterRaf) return;
-        this._chapterRaf = requestAnimationFrame(() => {
-          this._chapterRaf = null;
-          update();
-        });
-      },
-      { passive: true }
-    );
-    update();
-  }
 
-  _bindProgressLoop() {
-    const tick = () => {
-      this.scenes.forEach((scene) => {
-        if (!scene.onProgress) return;
-        const rect = scene.el.getBoundingClientRect();
-        const total = scene.el.offsetHeight - window.innerHeight;
+    let raf = null;
+    const loop = () => {
+      this.acts.forEach((act) => {
+        if (!act.onProgress) return;
+        const r = act.el.getBoundingClientRect();
+        const total = act.el.offsetHeight - window.innerHeight;
         if (total <= 0) return;
-        const progress = Math.min(1, Math.max(0, -rect.top / total));
-        if (rect.bottom > 0 && rect.top < window.innerHeight) {
-          scene.onProgress(this.reducedMotion ? Math.round(progress * 10) / 10 : progress);
-        }
+        if (r.bottom <= 0 || r.top >= window.innerHeight) return;
+        const p = Math.min(1, Math.max(0, -r.top / total));
+        act.onProgress(this.reducedMotion ? Math.round(p * 8) / 8 : p);
       });
-      requestAnimationFrame(tick);
+      syncAct();
+      raf = requestAnimationFrame(loop);
     };
-    requestAnimationFrame(tick);
+    raf = requestAnimationFrame(loop);
+    window.addEventListener("scroll", syncAct, { passive: true });
+    syncAct();
   }
 }
 
-export function clamp(n, min, max) {
-  return Math.min(max, Math.max(min, n));
+export function clamp(n, a, b) {
+  return Math.min(b, Math.max(a, n));
 }
-
 export function lerp(a, b, t) {
   return a + (b - a) * t;
+}
+export function ease(t) {
+  return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
 }

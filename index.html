@@ -3,393 +3,278 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Who Gets to Tell Australia’s Story? — Media Diversity, NBI &amp; Transparency</title>
-  <meta name="description" content="A visual interactive explainer of Australia’s News Bargaining Incentive, media diversity, power, money flows and transparency." />
-  <meta name="theme-color" content="#f4efe6" />
+  <title>Who Gets to Tell Australia’s Story?</title>
+  <meta name="description" content="A visual investigation of Australian media diversity, the 2026 News Bargaining Incentive, transparency and accountability." />
+  <meta name="theme-color" content="#f1ebe1" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Schibsted+Grotesk:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./assets/css/main.css" />
   <link rel="stylesheet" href="./assets/css/chapters.css" />
 </head>
 <body>
-  <a class="sr-only" href="#chapter-02">Skip to content</a>
+  <a class="sr-only" href="#act-02">Skip to content</a>
 
-  <nav class="progress-nav" id="progress-nav" aria-label="Chapter progress">
-    <a href="#chapter-01" data-label="01 Story" aria-label="Chapter 1"></a>
-    <a href="#chapter-02" data-label="02 Diversity" aria-label="Chapter 2"></a>
-    <a href="#chapter-03" data-label="03 Voices" aria-label="Chapter 3"></a>
-    <a href="#chapter-04" data-label="04 Experts" aria-label="Chapter 4"></a>
-    <a href="#chapter-05" data-label="05 2021" aria-label="Chapter 5"></a>
-    <a href="#chapter-06" data-label="06 Power" aria-label="Chapter 6"></a>
-    <a href="#chapter-07" data-label="07 NBI" aria-label="Chapter 7"></a>
-    <a href="#chapter-08" data-label="08 Money" aria-label="Chapter 8"></a>
-    <a href="#chapter-09" data-label="09 Design" aria-label="Chapter 9"></a>
-    <a href="#chapter-10" data-label="10 Transparency" aria-label="Chapter 10"></a>
-    <a href="#chapter-11" data-label="11 Proposal" aria-label="Chapter 11"></a>
-    <a href="#chapter-12" data-label="12 Evidence" aria-label="Chapter 12"></a>
+  <nav class="rail" id="rail" aria-label="Progress">
+    <a href="#act-01" data-l="01 Story" aria-label="Story"></a>
+    <a href="#act-02" data-l="02 Diversity" aria-label="Diversity"></a>
+    <a href="#act-03" data-l="03 Heard" aria-label="Heard"></a>
+    <a href="#act-04" data-l="04 Field" aria-label="Field"></a>
+    <a href="#act-05" data-l="05 2021" aria-label="2021"></a>
+    <a href="#act-06" data-l="06 NBI" aria-label="NBI"></a>
+    <a href="#act-07" data-l="07 Money" aria-label="Money"></a>
+    <a href="#act-08" data-l="08 Eight" aria-label="Eight"></a>
+    <a href="#act-09" data-l="09 Outcome" aria-label="Outcome"></a>
+    <a href="#act-10" data-l="10 See" aria-label="Transparency"></a>
+    <a href="#act-11" data-l="11 Proposal" aria-label="Proposal"></a>
+    <a href="#act-12" data-l="12 Return" aria-label="Return"></a>
   </nav>
 
-  <div id="drawer-backdrop" class="drawer-backdrop" aria-hidden="true"></div>
-  <aside id="source-drawer" class="source-drawer" role="dialog" aria-modal="true" aria-labelledby="source-drawer-title" aria-hidden="true"></aside>
+  <div id="backdrop" class="backdrop" aria-hidden="true"></div>
+  <aside id="drawer" class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" aria-hidden="true"></aside>
 
   <main>
-    <!-- 01 HERO -->
-    <section class="hero" id="chapter-01" data-chapter="chapter-01" data-scene="hero">
-      <div class="hero__sticky">
-        <div class="hero__content">
-          <h1 class="hero__title">
+    <!-- 01 STORY -->
+    <section class="act act--hero" id="act-01" data-act="act-01" style="--len:170vh;--len-m:145vh">
+      <div class="act__pin">
+        <div class="act__stage" id="stage-01">
+          <h1 class="giant" id="title-01">
             <span>Who gets to</span>
             <span>tell Australia’s</span>
             <span>story?</span>
           </h1>
-          <p class="hero__sub">Media diversity, bargaining power and transparency in Australia’s news ecosystem</p>
-          <div class="hero__meta"><span>SMBA6005 Group Pitch</span><span>Australia · 2026</span></div>
-        </div>
-        <div class="hero__ecosystem" aria-hidden="true">
-          <svg viewBox="0 0 100 100" role="img" aria-label="Media ecosystem network">
+          <svg class="world" id="eco-01" viewBox="0 0 100 100" aria-hidden="true" style="opacity:0;position:absolute;">
             <g class="links"></g><g class="nodes"></g>
           </svg>
         </div>
-        <p class="hero__hint">Scroll — the story zooms out</p>
+        <div class="act__hud">
+          <p class="micro" id="meta-01">SMBA6005 · Australia · 2026</p>
+        </div>
       </div>
     </section>
 
     <!-- 02 DIVERSITY -->
-    <section class="chapter" id="chapter-02" data-chapter="chapter-02">
-      <header class="chapter-head reveal">
-        <p class="kicker">02 — What is a diverse media?</p>
-        <h2 class="headline">Not just large. Varied.</h2>
-        <p class="lede">A healthy information ecosystem is measured by range — whose places, lives and perspectives can still be reported.</p>
-      </header>
-      <div class="wrap">
-        <div class="photo-break reveal">
-          <img src="./assets/img/visual-regional.jpg" alt="Atmospheric view suggesting regional Australian community news contexts" width="1600" height="900" loading="lazy" />
-          <p class="photo-break__caption">Editorial visual · regional &amp; local news contexts</p>
-        </div>
-        <div class="split-viz graphic-panel reveal">
-          <div>
-            <p class="graphic-panel__label">Infographic · Conceptual categories · not measured shares</p>
-            <div class="diversity-spectrum" id="diversity-spectrum" aria-hidden="true"></div>
-            <div class="concept-pills" id="concept-pills"></div>
-          </div>
-          <div class="split-viz__copy">
-            <p class="tag tag--illustrative">Conceptual</p>
-            <h3>Variety distributes attention</h3>
-            <p>First Nations, regional, local, independent, community, cultural, disability, migrant, LGBTQIA+ and socioeconomic perspectives are not interchangeable.</p>
-            <p>We do not invent statistics. The bars show a visual idea of spread — not real market data.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 03 VOICES -->
-    <section class="chapter" id="chapter-03" data-chapter="chapter-03">
-      <header class="chapter-head reveal">
-        <p class="kicker">03 — Whose voices are heard?</p>
-        <h2 class="headline">Hearing is uneven.</h2>
-        <p class="lede"><span class="tag tag--illustrative">Illustrative model</span> — Conceptual only. Not measured audience share.</p>
-      </header>
-      <div class="wrap split-viz graphic-panel reveal">
-        <div>
-          <p class="graphic-panel__label">Voice reach · illustrative meters</p>
-          <div class="voice-chart" id="voice-chart">
-            <div class="voice-row"><div class="voice-meter is-loud" style="--level:88%"><b></b></div><small>Easy to hear</small></div>
-            <div class="voice-row"><div class="voice-meter" style="--level:62%"><b></b></div><small>Present</small></div>
-            <div class="voice-row"><div class="voice-meter is-faint" style="--level:34%"><b></b></div><small>Harder to hear</small></div>
-            <div class="voice-row"><div class="voice-meter is-faint" style="--level:18%"><b></b></div><small>Resource-thin</small></div>
-          </div>
-        </div>
-        <div class="split-viz__copy">
-          <h3>Who keeps speaking?</h3>
-          <p>Some voices compound with reach and resources. Others remain present — but faint.</p>
-          <p>Sustainability decides whether a voice is a moment, or a practice.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 04 EXPERTS / INTERVIEW -->
-    <section class="chapter" id="chapter-04" data-chapter="chapter-04">
-      <header class="chapter-head reveal">
-        <p class="kicker">04 — Hear from the people working on it</p>
-        <h2 class="headline">Policy should meet practice.</h2>
-        <p class="lede">Multimodal by design: live interview players when verified media arrives — or a clear stakeholder briefing if it does not.</p>
-      </header>
-      <div class="wrap reveal">
-        <div class="photo-break">
-          <img src="./assets/img/visual-voices.jpg" alt="Editorial still suggesting dialogue and stakeholder conversation" width="1600" height="900" loading="lazy" />
-          <p class="photo-break__caption">Editorial visual · dialogue &amp; deliberation</p>
-        </div>
-        <div id="interview-root"></div>
-      </div>
-    </section>
-
-    <!-- 05 TIMELINE -->
-    <section class="chapter" id="chapter-05" data-chapter="chapter-05">
-      <header class="chapter-head reveal">
-        <p class="kicker">05 — The 2021 experiment</p>
-        <h2 class="headline">From Code to Incentive.</h2>
-        <p class="lede">One visual journey through the bargaining era — not a long scroll through every year.</p>
-      </header>
-      <div class="wrap graphic-panel reveal">
-        <p class="graphic-panel__label">Timeline · primary sources cited in steps below</p>
-        <div class="timeline-track">
-          <div class="timeline-node">
-            <strong>2020</strong>
-            <p>ACCC asked to develop a mandatory bargaining code.</p>
-          </div>
-          <div class="timeline-node is-key">
-            <strong>2021</strong>
-            <p>Code enacted Feb; in effect March.</p>
-          </div>
-          <div class="timeline-node">
-            <strong>2021+</strong>
-            <p>No designation — voluntary deals emerge.</p>
-          </div>
-          <div class="timeline-node">
-            <strong>2024</strong>
-            <p>Settlement under pressure; terms mostly private.</p>
-          </div>
-          <div class="timeline-node is-key">
-            <strong>2026</strong>
-            <p>NMI charge–offset framework enacted.</p>
-          </div>
-        </div>
-        <div class="split-viz__copy" style="margin-top:1.25rem;max-width:40rem;">
-          <p class="tag tag--fact">Fact</p>
-          <p>The News Media and Digital Platforms Mandatory Bargaining Code was enacted in February 2021 and came into effect in March 2021. It addressed bargaining power imbalances between Australian news businesses and major digital platforms. <span data-sources="source-code-01,source-code-02,source-code-03"></span></p>
-          <p>No digital platforms were formally designated under the Code, but the framework’s existence contributed to Google and Meta entering voluntary commercial agreements with Australian news organisations. <span data-sources="source-code-02"></span></p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 06 POWER -->
-    <section class="chapter" id="chapter-06" data-chapter="chapter-06">
-      <header class="chapter-head reveal">
-        <p class="kicker">06 — Why did the system change?</p>
-        <h2 class="headline">Bargaining asymmetry.</h2>
-        <p class="lede"><span class="tag tag--illustrative">Conceptual scale</span> — Not fabricated market-share percentages.</p>
-      </header>
-      <div class="wrap split-viz graphic-panel reveal">
-        <div>
-          <p class="graphic-panel__label">Structural leverage · illustrative</p>
-          <div class="scale-compare">
-            <div class="scale-block scale-block--news"><div class="bar"></div><span>News businesses</span></div>
-            <div class="scale-block scale-block--plat"><div class="bar"></div><span>Digital platforms</span></div>
-          </div>
-          <p class="walk-callout">What happens if the platform simply walks away?</p>
-        </div>
-        <div class="split-viz__copy">
-          <h3>Exit risk reshapes design</h3>
-          <p>When one side can leave the table, settlements stay fragile. That tension helps explain the move toward a 2026 incentive built around charge and offset. <span data-sources="source-code-02"></span></p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 07 NBI -->
-    <section class="chapter" id="chapter-07" data-chapter="chapter-07">
-      <header class="chapter-head reveal">
-        <p class="kicker">07 — The 2026 NBI</p>
-        <h2 class="headline">How the mechanism works.</h2>
-        <p class="lede">Tap the steps — one compact flowchart. Distinguish design, intent and outcome. The NBI does not guarantee diversity.</p>
-      </header>
-      <div class="wrap graphic-panel reveal" id="nbi-board">
-        <div class="nbi-steps" role="tablist" aria-label="NBI mechanism steps">
-          <button type="button" role="tab" aria-selected="true" data-nbi-step="0">1 Platform</button>
-          <button type="button" role="tab" aria-selected="false" data-nbi-step="1">2 Revenue</button>
-          <button type="button" role="tab" aria-selected="false" data-nbi-step="2">3 Liability</button>
-          <button type="button" role="tab" aria-selected="false" data-nbi-step="3">4 Pathways</button>
-          <button type="button" role="tab" aria-selected="false" data-nbi-step="4">5 Guardrails</button>
-        </div>
-        <div class="nbi-board">
-          <div class="flow-stack" aria-live="polite">
-            <div class="flow-node is-on" data-flow="0">Digital platform</div>
-            <div class="flow-arrow"></div>
-            <div class="flow-node" data-flow="1">Relevant Australian digital advertising revenue</div>
-            <div class="flow-arrow"></div>
-            <div class="flow-node" data-flow="2">NMI liability</div>
-            <div class="flow-arrow"></div>
-            <div class="flow-split">
-              <div class="flow-node" data-flow="3">Qualifying news expenditure</div>
-              <div class="flow-node" data-flow="3">NMI payment</div>
-            </div>
-          </div>
-          <div class="stat-strip">
-            <div><strong data-bind="rate">2.75%</strong><span>Charge rate</span></div>
-            <div><strong data-bind="threshold">$250m</strong><span>Revenue threshold</span></div>
-            <div><strong data-bind="groups">8</strong><span>Min. groups</span></div>
-            <div><strong data-bind="cap">25%</strong><span>Single-group cap</span></div>
-          </div>
-        </div>
-        <div class="split-viz__copy" style="margin-top:1rem;" id="nbi-caption">
-          <p class="tag tag--policy">Policy design</p>
-          <p>Applies to significant social media or internet search services in Australia. <span data-sources="source-nbi-02,source-nbi-03"></span></p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 08 MONEY -->
-    <section class="chapter" id="chapter-08" data-chapter="chapter-08">
-      <header class="chapter-head reveal">
-        <p class="kicker">08 — Follow the money</p>
-        <h2 class="headline">Where support can flow.</h2>
-        <p class="lede"><span class="tag tag--illustrative">Illustrative flow</span> — No fabricated dollar amounts.</p>
-      </header>
-      <div class="wrap reveal">
-        <div class="photo-break">
-          <img src="./assets/img/visual-money.jpg" alt="Abstract editorial visual suggesting pathways of funding" width="1600" height="900" loading="lazy" />
-          <p class="photo-break__caption">Editorial visual · funding pathways</p>
-        </div>
-        <div class="graphic-panel">
-          <p class="graphic-panel__label">Money pathway · conceptual Sankey</p>
-          <svg class="sankey" viewBox="0 0 760 280" role="img" aria-label="Illustrative money flow from platforms to the public">
-            <path class="band" d="M40,40 C140,40 140,70 240,70 L240,110 C140,110 140,140 40,140 Z" fill="#3d5c4b" />
-            <path class="band" d="M240,70 C340,70 340,50 440,50 L440,90 C340,90 340,110 240,110 Z" fill="#b07d3a" opacity="0.75" />
-            <path class="band" d="M240,70 C340,70 340,160 440,160 L440,210 C340,210 340,110 240,110 Z" fill="#8a3b35" opacity="0.55" />
-            <path class="band" d="M440,50 C540,50 540,90 640,90 L640,130 C540,130 540,90 440,90 Z" fill="#3d5c4b" opacity="0.7" />
-            <path class="band" d="M440,160 C540,160 540,180 640,180 L640,230 C540,230 540,210 440,210 Z" fill="#1a1917" opacity="0.45" />
-            <text class="label" x="40" y="100">Platform</text>
-            <text class="label" x="250" y="95">NBI / NMI</text>
-            <text class="label" x="450" y="75">Offset deals</text>
-            <text class="label" x="450" y="190">Charge → NJPS</text>
-            <text class="label" x="640" y="118">News orgs</text>
-            <text class="label" x="640" y="212">Journalists → public</text>
+    <section class="act" id="act-02" data-act="act-02" style="--len:165vh;--len-m:140vh">
+      <div class="act__pin">
+        <div class="act__stage" id="stage-02">
+          <p class="giant" id="word-02">DIVERSITY</p>
+          <svg class="world" id="eco-02" viewBox="0 0 100 100" aria-hidden="true" style="opacity:0;position:absolute;">
+            <g class="links"></g><g class="nodes"></g><g class="labels"></g>
           </svg>
-          <p class="sankey-note">Illustrative · not a ledger · charge receipts directed to the News Journalism Payment Scheme <span data-sources="source-nbi-05"></span></p>
+          <p class="whisper" id="line-02" style="opacity:0;position:absolute;"></p>
+        </div>
+        <div class="act__hud">
+          <button type="button" class="detail-btn" data-detail="diversity">Detail</button>
         </div>
       </div>
     </section>
 
-    <!-- 09 EIGHT / DIVERSITY DESIGN -->
-    <section class="chapter" id="chapter-09" data-chapter="chapter-09">
-      <header class="chapter-head reveal">
-        <p class="kicker">09 — Does the design support diversity?</p>
-        <h2 class="headline">Eight groups. One cap.</h2>
-        <p class="lede">Use the stepper — watch concentration become breadth. Intent still is not outcome.</p>
-      </header>
-      <div class="wrap graphic-panel reveal" id="eight-board">
-        <div class="eight-board">
-          <div class="eight-controls" role="group" aria-label="Number of news-business groups">
-            <button type="button" aria-pressed="true" data-n="1">1</button>
-            <button type="button" aria-pressed="false" data-n="2">2</button>
-            <button type="button" aria-pressed="false" data-n="3">3</button>
-            <button type="button" aria-pressed="false" data-n="4">4</button>
-            <button type="button" aria-pressed="false" data-n="5">5</button>
-            <button type="button" aria-pressed="false" data-n="6">6</button>
-            <button type="button" aria-pressed="false" data-n="7">7</button>
-            <button type="button" aria-pressed="false" data-n="8">8</button>
+    <!-- 03 HEARD -->
+    <section class="act" id="act-03" data-act="act-03" style="--len:155vh;--len-m:135vh">
+      <div class="act__pin">
+        <div class="act__stage" id="stage-03">
+          <svg class="world" id="eco-03" viewBox="0 0 100 100" role="img" aria-label="Illustrative voice network">
+            <g class="nodes"></g>
+          </svg>
+          <p class="whisper" id="line-03" style="position:absolute;bottom:18%;opacity:0;"></p>
+          <p class="badge badge--illust" style="position:absolute;top:12%;">Illustrative</p>
+        </div>
+        <div class="act__hud">
+          <button type="button" class="detail-btn" data-detail="voices">Detail</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 FIELD / INTERVIEW -->
+    <section class="act act--hear" id="act-04" data-act="act-04">
+      <div class="act__pin">
+        <div class="hear" id="hear-root">
+          <p class="giant" style="font-size:clamp(2rem,7vw,4rem);">Hear from<br />the field</p>
+          <div class="hear__media" id="hear-media">
+            <button type="button" class="hear__play" id="hear-play" hidden>Listen</button>
+            <span id="hear-ph">[Insert portrait / video]</span>
           </div>
-          <div class="eight-ring" aria-hidden="true">
-            <div class="eight-center" id="eight-center">Concentration</div>
-            <div class="eight-node">1</div><div class="eight-node">2</div><div class="eight-node">3</div><div class="eight-node">4</div>
-            <div class="eight-node">5</div><div class="eight-node">6</div><div class="eight-node">7</div><div class="eight-node">8</div>
-          </div>
-          <div class="cap-pie">
-            <div class="pie" aria-hidden="true"></div>
-            <div>
-              <p class="tag tag--policy">Policy design</p>
-              <p style="margin:0.35rem 0;color:var(--ink-soft);">A single corporate group cannot account for more than <strong>25%</strong> of the NMI offset. Offset entitlement requires eligible expenditure across at least <strong>8</strong> news business corporate groups. <span data-sources="source-nbi-02,source-nbi-03"></span></p>
-            </div>
-          </div>
-          <div class="intent-neq">
-            <div>Policy intent</div>
-            <b>≠</b>
-            <div>Guaranteed outcome</div>
-          </div>
-          <p style="max-width:34rem;text-align:center;color:var(--ink-soft);margin:0;">
-            <span class="tag tag--analysis">Our analysis</span><br />
-            The mechanism is designed to encourage support across a broader range of news businesses — not to guarantee diverse journalism.
+          <p class="hear__meta" id="hear-meta">Media Diversity Australia · LINA</p>
+          <audio id="hear-audio" controls preload="none" hidden></audio>
+          <details>
+            <summary>Transcript</summary>
+            <div class="hear__transcript" id="hear-transcript">[Insert transcript]</div>
+          </details>
+          <p style="margin-top:1rem;">
+            <button type="button" class="detail-btn" data-detail="interview">Why?</button>
           </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 2021 -->
+    <section class="act" id="act-05" data-act="act-05" style="--len:175vh;--len-m:150vh">
+      <div class="act__pin">
+        <div class="act__stage" id="stage-05">
+          <div class="year-stack" id="years-05" aria-hidden="true">
+            <div class="y" data-y="0">2020</div>
+            <div class="y" data-y="1">2021</div>
+            <div class="y" data-y="2">2021+</div>
+            <div class="y" data-y="3">2024</div>
+            <div class="y" data-y="4">2026</div>
+          </div>
+          <p class="year-event" id="event-05"></p>
+        </div>
+        <div class="act__hud">
+          <span data-sources="source-code-01,source-code-02,source-code-03"></span>
+          <button type="button" class="detail-btn" data-detail="2021">Detail</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 NBI -->
+    <section class="act" id="act-06" data-act="act-06" style="--len:185vh;--len-m:155vh">
+      <div class="act__pin">
+        <div class="act__stage" id="stage-06">
+          <p class="badge badge--policy" id="badge-06" style="position:absolute;top:14%;opacity:0;">Policy</p>
+          <p class="nbi-num" id="num-06">NBI</p>
+          <p class="whisper" id="sub-06" style="opacity:0;margin-top:0.75rem;"></p>
+          <div class="nbi-branch" id="branch-06">
+            <div>Qualifying expenditure</div>
+            <div>NMI payment</div>
+          </div>
+        </div>
+        <div class="act__hud">
+          <span data-sources="source-nbi-01,source-nbi-02,source-nbi-03"></span>
+          <button type="button" class="detail-btn" data-detail="nbi">Detail</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 MONEY -->
+    <section class="act" id="act-07" data-act="act-07" style="--len:155vh;--len-m:135vh">
+      <div class="act__pin">
+        <div class="act__stage" id="stage-07">
+          <p class="badge badge--illust" style="position:absolute;top:12%;">Illustrative</p>
+          <svg class="money" id="money-07" viewBox="0 0 320 420" aria-hidden="true">
+            <path id="moneyPath" d="M160 30 C160 90 160 90 160 130 C160 170 80 190 80 230 C80 270 160 290 160 330 C160 370 160 370 160 400" />
+            <circle class="dot" r="5" cx="160" cy="30" />
+            <circle class="dot" r="5" cx="160" cy="30" />
+            <circle class="dot" r="5" cx="160" cy="30" />
+            <circle class="dot" r="5" cx="160" cy="30" />
+            <text x="160" y="22" text-anchor="middle">Platform</text>
+            <text x="160" y="122" text-anchor="middle">NBI</text>
+            <text x="48" y="234" text-anchor="middle">Charge / offset</text>
+            <text x="160" y="322" text-anchor="middle">NJPS</text>
+            <text x="160" y="412" text-anchor="middle">Public</text>
+          </svg>
+        </div>
+        <div class="act__hud">
+          <span data-sources="source-nbi-05"></span>
+          <button type="button" class="detail-btn" data-detail="money">Detail</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 EIGHT -->
+    <section class="act" id="act-08" data-act="act-08" style="--len:175vh;--len-m:150vh">
+      <div class="act__pin">
+        <div class="act__stage" id="stage-08">
+          <div class="eight-wrap" id="eight-08" aria-hidden="true">
+            <div class="eight-core" id="eight-core">1</div>
+            <div class="eight-dot">1</div><div class="eight-dot">2</div><div class="eight-dot">3</div><div class="eight-dot">4</div>
+            <div class="eight-dot">5</div><div class="eight-dot">6</div><div class="eight-dot">7</div><div class="eight-dot">8</div>
+          </div>
+          <p class="cap25" id="cap-08">25%<br /><span style="font-size:0.35em;letter-spacing:0.12em;text-transform:uppercase;font-family:var(--font-u);">One group max</span></p>
+        </div>
+        <div class="act__hud">
+          <span data-sources="source-nbi-02,source-nbi-03"></span>
+          <button type="button" class="detail-btn" data-detail="eight">Detail</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 OUTCOME -->
+    <section class="act" id="act-09" data-act="act-09" style="--len:130vh;--len-m:120vh">
+      <div class="act__pin">
+        <div class="act__stage" id="stage-09">
+          <div class="neq" id="neq-09">
+            <p class="badge badge--analysis">Our analysis</p>
+            <p class="a" id="neq-a">Policy design</p>
+            <p class="x">≠</p>
+            <p class="b" id="neq-b">Guaranteed outcome</p>
+          </div>
+        </div>
+        <div class="act__hud">
+          <button type="button" class="detail-btn" data-detail="outcome">Detail</button>
         </div>
       </div>
     </section>
 
     <!-- 10 TRANSPARENCY -->
-    <section class="chapter" id="chapter-10" data-chapter="chapter-10">
-      <header class="chapter-head reveal">
-        <p class="kicker">10 — Transparency</p>
-        <h2 class="headline">What can we verify?</h2>
-        <p class="lede"><span class="tag tag--analysis">Our analysis</span> — Publishing numbers is not necessarily enough.</p>
-      </header>
-      <div class="wrap reveal">
-        <div class="photo-break">
-          <img src="./assets/img/visual-transparency.jpg" alt="Layered translucent paper suggesting disclosure and opacity" width="1600" height="900" loading="lazy" />
-          <p class="photo-break__caption">Editorial visual · layers of visibility</p>
+    <section class="act" id="act-10" data-act="act-10" style="--len:175vh;--len-m:150vh">
+      <div class="act__pin">
+        <div class="act__stage" id="stage-10">
+          <p class="giant" id="word-10" style="position:absolute;">TRANSPARENCY</p>
+          <div class="glass" id="glass-10" style="opacity:0;">
+            <div class="glass__layer" data-g="0">Opaque</div>
+            <div class="glass__layer" data-g="1">Numbers</div>
+            <div class="glass__layer" data-g="2">Publishers</div>
+            <div class="glass__layer" data-g="3">Verification</div>
+          </div>
+          <p class="whisper" id="ask-10" style="position:absolute;bottom:16%;opacity:0;"></p>
+          <div class="neq" id="disc-10" style="position:absolute;opacity:0;">
+            <p class="a">Disclosure</p>
+            <p class="x">≠</p>
+            <p class="b">Accountability</p>
+          </div>
         </div>
-        <div class="graphic-panel" id="transparency-board">
-          <div class="t-stack" aria-hidden="true">
-            <div class="t-layer" data-i="0">Opaque</div>
-            <div class="t-layer" data-i="1">Partial light</div>
-            <div class="t-layer" data-i="2">Numbers · publishers</div>
-            <div class="t-layer" data-i="3">Methodology · verification</div>
-          </div>
-          <div class="t-controls" role="tablist" aria-label="Transparency layers">
-            <button type="button" role="tab" aria-selected="true" data-t="0">Opaque</button>
-            <button type="button" role="tab" aria-selected="false" data-t="1">Partial</button>
-            <button type="button" role="tab" aria-selected="false" data-t="2">Numbers</button>
-            <button type="button" role="tab" aria-selected="false" data-t="3">Verify</button>
-          </div>
-          <p class="neq-line">Disclosure <span class="x">≠</span> Accountability</p>
-          <p style="max-width:36rem;margin:0.75rem auto 0;text-align:center;color:var(--ink-soft);">
-            Can the public see how amounts were calculated, who received them, what reached journalism versus overhead, and who verified the information?
-          </p>
+        <div class="act__hud">
+          <p class="badge badge--analysis">Our analysis</p>
+          <button type="button" class="detail-btn" data-detail="transparency">Detail</button>
         </div>
       </div>
     </section>
 
     <!-- 11 PROPOSAL -->
-    <section class="chapter" id="chapter-11" data-chapter="chapter-11">
-      <header class="chapter-head reveal">
-        <p class="kicker">11 — Our intervention</p>
-        <h2 class="headline">Talk → decision → action.</h2>
-        <p class="lede"><span class="tag tag--proposal">Our proposal</span> — Not an existing government requirement.</p>
-      </header>
-      <div class="wrap graphic-panel reveal">
-        <div class="chain" id="proposal-chain" aria-hidden="true">
-          <span class="is-on">Talk</span><i>→</i>
-          <span>Decision</span><i>→</i>
-          <span>Action</span><i>→</i>
-          <span>Disclosure</span><i>→</i>
-          <span>Verification</span><i>→</i>
-          <span>Accountability</span>
+    <section class="act" id="act-11" data-act="act-11" style="--len:145vh;--len-m:130vh">
+      <div class="act__pin">
+        <div class="act__stage" id="stage-11">
+          <p class="badge badge--proposal" style="position:absolute;top:14%;">Our proposal</p>
+          <div class="prop" id="prop-11">
+            <span>Talk</span><i>→</i>
+            <span>Decision</span><i>→</i>
+            <span>Action</span><i>→</i>
+            <span>Disclose</span><i>→</i>
+            <span>Review</span><i>→</i>
+            <span>Publish</span><i>→</i>
+            <span>Include</span>
+          </div>
         </div>
-        <div class="split-viz" style="margin-top:1.35rem;">
-          <div class="split-viz__copy">
-            <h3>Voluntary structural disclosure</h3>
-            <p>News Corp publishes the structure of major technology-platform agreements: how money is calculated, distributed, and how much reaches journalism versus overhead.</p>
-            <p>Then: independent review → public report → smaller publishers at the table.</p>
-          </div>
-          <div class="split-viz__copy">
-            <p class="tag tag--proposal">Why this pitch</p>
-            <p>If the NBI is supposed to support a diverse news media, voluntary transparency is how a major publisher can help the public test whether that objective is being delivered.</p>
-          </div>
+        <div class="act__hud">
+          <button type="button" class="detail-btn" data-detail="proposal">Detail</button>
         </div>
       </div>
     </section>
 
-    <!-- 12 FINALE + EVIDENCE -->
-    <section class="finale" id="chapter-12" data-chapter="chapter-12">
-      <p class="kicker">12 — Return to the question</p>
-      <h2>Who gets to tell Australia’s story?</h2>
-      <p>Who has the resources to keep telling it?</p>
-      <p>Can we see whether the system is actually diverse?</p>
-      <p>And who gets to decide whether the system is working?</p>
-      <a class="finale__cta" href="#evidence">Explore the evidence</a>
+    <!-- 12 RETURN -->
+    <section class="act act--finale" id="act-12" data-act="act-12" style="--len:240vh;--len-m:200vh">
+      <div class="act__pin">
+        <div class="act__stage" id="stage-12">
+          <svg class="world" id="eco-12" viewBox="0 0 100 100" aria-hidden="true" style="opacity:0.35;position:absolute;">
+            <g class="links"></g><g class="nodes"></g>
+          </svg>
+          <p class="giant" id="q-12" style="position:relative;z-index:2;font-size:clamp(1.8rem,6vw,3.8rem);"></p>
+        </div>
+        <div class="act__hud">
+          <a class="detail-btn" href="#evidence" style="text-decoration:none;display:inline-block;">Explore the evidence</a>
+        </div>
+      </div>
     </section>
 
-    <section class="evidence wrap" id="evidence">
-      <p class="kicker">Evidence &amp; scenarios</p>
-      <h2 class="headline" style="max-width:22ch;">Primary sources &amp; hypothetical pathways</h2>
-      <p class="lede">Click citation markers throughout the story, or browse below. Scenarios are hypothetical — not predictions.</p>
-
-      <div id="scenario-root" style="margin:1.75rem 0 2rem;"></div>
+    <section class="evidence" id="evidence">
+      <p class="badge">Sources</p>
+      <h2>Evidence</h2>
       <ul class="evidence-list" id="evidence-list"></ul>
     </section>
   </main>
 
-  <footer class="site-footer wrap">
-    <p>SMBA6005 group pitch · Static GitHub Pages site · No paid backend · Fact, policy, analysis and proposal are labelled throughout.</p>
-  </footer>
+  <footer class="foot">SMBA6005 group pitch · Australia 2026</footer>
 
   <script type="module" src="./assets/js/main.js"></script>
 </body>
