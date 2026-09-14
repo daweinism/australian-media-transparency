@@ -59,7 +59,7 @@ export class SourceSystem {
   _open(badge, body, title) {
     this.drawer.innerHTML = `
       <button type="button" class="drawer__x" data-close>Close</button>
-      <p class="badge">${esc(badge)}</p>
+      <p class="tag">${esc(badge)}</p>
       <h2 id="drawer-title">${esc(title)}</h2>
       ${body}
     `;

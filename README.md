@@ -35,12 +35,12 @@ From primary legislation (see `data/sources.json` and `data/nbi.json`):
 
 | Item | Value |
 | --- | --- |
-| Charge rate | **2.75%** (News Media Bargaining Charge Act 2026) |
+| Charge rate | **2.75%** (News Media Bargaining Charge Act 2026 s 3) |
 | Threshold | **$250M+** relevant Australian digital advertising revenue |
 | Offset groups | **≥ 8** news business corporate groups |
 | Single-group cap | **25%** of the NMI offset |
 
-Earlier design versions used 2.5%; the **enacted** rate is 2.75%.
+Note: Some earlier public materials referred to **2.5%**. The **enacted** Act sets **2.75%**. The site follows the Federal Register text.
 
 ## Interviews
 

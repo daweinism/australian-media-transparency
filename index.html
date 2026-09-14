@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Who Gets to Tell Australia’s Story?</title>
   <meta name="description" content="A visual investigation of Australian media diversity, the 2026 News Bargaining Incentive, transparency and accountability." />
-  <meta name="theme-color" content="#f1ebe1" />
+  <meta name="theme-color" content="#f2ece3" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -19,263 +19,321 @@
     <a href="#act-01" data-l="01 Story" aria-label="Story"></a>
     <a href="#act-02" data-l="02 Diversity" aria-label="Diversity"></a>
     <a href="#act-03" data-l="03 Heard" aria-label="Heard"></a>
-    <a href="#act-04" data-l="04 Field" aria-label="Field"></a>
-    <a href="#act-05" data-l="05 2021" aria-label="2021"></a>
-    <a href="#act-06" data-l="06 NBI" aria-label="NBI"></a>
-    <a href="#act-07" data-l="07 Money" aria-label="Money"></a>
-    <a href="#act-08" data-l="08 Eight" aria-label="Eight"></a>
-    <a href="#act-09" data-l="09 Outcome" aria-label="Outcome"></a>
-    <a href="#act-10" data-l="10 See" aria-label="Transparency"></a>
-    <a href="#act-11" data-l="11 Proposal" aria-label="Proposal"></a>
-    <a href="#act-12" data-l="12 Return" aria-label="Return"></a>
+    <a href="#act-04" data-l="04 2021" aria-label="2021"></a>
+    <a href="#act-05" data-l="05 2026" aria-label="2026"></a>
+    <a href="#act-06" data-l="06 2.75%" aria-label="Charge rate"></a>
+    <a href="#act-07" data-l="07 $250M" aria-label="Threshold"></a>
+    <a href="#act-08" data-l="08 Paths" aria-label="Paths"></a>
+    <a href="#act-09" data-l="09 Eight" aria-label="Eight"></a>
+    <a href="#act-10" data-l="10 25%" aria-label="25 percent"></a>
+    <a href="#act-11" data-l="11 Money" aria-label="Money"></a>
+    <a href="#act-12" data-l="12 Scale" aria-label="Scale"></a>
+    <a href="#act-13" data-l="13 See" aria-label="Transparency"></a>
+    <a href="#act-14" data-l="14 Proposal" aria-label="Proposal"></a>
+    <a href="#act-15" data-l="15 Return" aria-label="Return"></a>
   </nav>
 
   <div id="backdrop" class="backdrop" aria-hidden="true"></div>
   <aside id="drawer" class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" aria-hidden="true"></aside>
 
   <main>
-    <!-- 01 STORY -->
-    <section class="act act--hero" id="act-01" data-act="act-01" style="--len:170vh;--len-m:145vh">
+    <!-- 01 HERO -->
+    <section class="act act--hero" id="act-01" data-act="act-01" style="--len:165vh;--len-m:140vh">
       <div class="act__pin">
-        <div class="act__stage" id="stage-01">
-          <h1 class="giant" id="title-01">
+        <div class="act__frame" id="stage-01">
+          <h1 class="hero-title" id="title-01">
             <span>Who gets to</span>
             <span>tell Australia’s</span>
             <span>story?</span>
           </h1>
-          <svg class="world" id="eco-01" viewBox="0 0 100 100" aria-hidden="true" style="opacity:0;position:absolute;">
-            <g class="links"></g><g class="nodes"></g>
-          </svg>
+          <p class="caption" id="cap-01" style="opacity:0;">Australian media ecosystem</p>
         </div>
-        <div class="act__hud">
-          <p class="micro" id="meta-01">SMBA6005 · Australia · 2026</p>
-        </div>
+        <svg class="eco" id="eco-01" viewBox="0 0 100 100" aria-hidden="true">
+          <g class="links"></g><g class="nodes"></g>
+        </svg>
+        <div class="hud"><p class="tag">SMBA6005 · 2026</p></div>
       </div>
     </section>
 
     <!-- 02 DIVERSITY -->
-    <section class="act" id="act-02" data-act="act-02" style="--len:165vh;--len-m:140vh">
+    <section class="act" id="act-02" data-act="act-02" style="--len:150vh;--len-m:135vh">
       <div class="act__pin">
-        <div class="act__stage" id="stage-02">
-          <p class="giant" id="word-02">DIVERSITY</p>
-          <svg class="world" id="eco-02" viewBox="0 0 100 100" aria-hidden="true" style="opacity:0;position:absolute;">
-            <g class="links"></g><g class="nodes"></g><g class="labels"></g>
-          </svg>
-          <p class="whisper" id="line-02" style="opacity:0;position:absolute;"></p>
+        <div class="act__frame" id="stage-02">
+          <p class="word" id="word-02">DIVERSITY</p>
+          <p class="caption">Many kinds of news</p>
+          <div class="voice-grid" id="chips-02" aria-hidden="true"></div>
+          <p class="subcap" id="line-02">One voice → many voices</p>
         </div>
-        <div class="act__hud">
-          <button type="button" class="detail-btn" data-detail="diversity">Detail</button>
+        <div class="hud">
+          <button type="button" class="more" data-detail="diversity">Detail</button>
         </div>
       </div>
     </section>
 
     <!-- 03 HEARD -->
-    <section class="act" id="act-03" data-act="act-03" style="--len:155vh;--len-m:135vh">
+    <section class="act" id="act-03" data-act="act-03" style="--len:145vh;--len-m:130vh">
       <div class="act__pin">
-        <div class="act__stage" id="stage-03">
-          <svg class="world" id="eco-03" viewBox="0 0 100 100" role="img" aria-label="Illustrative voice network">
-            <g class="nodes"></g>
-          </svg>
-          <p class="whisper" id="line-03" style="position:absolute;bottom:18%;opacity:0;"></p>
-          <p class="badge badge--illust" style="position:absolute;top:12%;">Illustrative</p>
-        </div>
-        <div class="act__hud">
-          <button type="button" class="detail-btn" data-detail="voices">Detail</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- 04 FIELD / INTERVIEW -->
-    <section class="act act--hear" id="act-04" data-act="act-04">
-      <div class="act__pin">
-        <div class="hear" id="hear-root">
-          <p class="giant" style="font-size:clamp(2rem,7vw,4rem);">Hear from<br />the field</p>
-          <div class="hear__media" id="hear-media">
-            <button type="button" class="hear__play" id="hear-play" hidden>Listen</button>
-            <span id="hear-ph">[Insert portrait / video]</span>
+        <div class="act__frame" id="stage-03">
+          <p class="tag tag--illust">Illustrative</p>
+          <p class="word" style="font-size:clamp(2rem,6vw,3.4rem);">Who gets heard?</p>
+          <div class="meters" id="meters-03">
+            <div class="meter is-loud" style="--w:92%"><span>Loud</span><i></i></div>
+            <div class="meter" style="--w:58%"><span>Present</span><i></i></div>
+            <div class="meter is-quiet" style="--w:28%"><span>Quiet</span><i></i></div>
+            <div class="meter is-miss" style="--w:10%"><span>Missing</span><i></i></div>
           </div>
-          <p class="hear__meta" id="hear-meta">Media Diversity Australia · LINA</p>
-          <audio id="hear-audio" controls preload="none" hidden></audio>
-          <details>
-            <summary>Transcript</summary>
-            <div class="hear__transcript" id="hear-transcript">[Insert transcript]</div>
-          </details>
-          <p style="margin-top:1rem;">
-            <button type="button" class="detail-btn" data-detail="interview">Why?</button>
-          </p>
+          <p class="caption" id="line-03">Who has resources to keep speaking?</p>
+        </div>
+        <div class="hud">
+          <button type="button" class="more" data-detail="voices">Detail</button>
         </div>
       </div>
     </section>
 
-    <!-- 05 2021 -->
-    <section class="act" id="act-05" data-act="act-05" style="--len:175vh;--len-m:150vh">
+    <!-- 04 2021 TIMELINE -->
+    <section class="act" id="act-04" data-act="act-04" style="--len:160vh;--len-m:145vh">
       <div class="act__pin">
-        <div class="act__stage" id="stage-05">
-          <div class="year-stack" id="years-05" aria-hidden="true">
-            <div class="y" data-y="0">2020</div>
-            <div class="y" data-y="1">2021</div>
-            <div class="y" data-y="2">2021+</div>
-            <div class="y" data-y="3">2024</div>
-            <div class="y" data-y="4">2026</div>
-          </div>
-          <p class="year-event" id="event-05"></p>
-        </div>
-        <div class="act__hud">
-          <span data-sources="source-code-01,source-code-02,source-code-03"></span>
-          <button type="button" class="detail-btn" data-detail="2021">Detail</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- 06 NBI -->
-    <section class="act" id="act-06" data-act="act-06" style="--len:185vh;--len-m:155vh">
-      <div class="act__pin">
-        <div class="act__stage" id="stage-06">
-          <p class="badge badge--policy" id="badge-06" style="position:absolute;top:14%;opacity:0;">Policy</p>
-          <p class="nbi-num" id="num-06">NBI</p>
-          <p class="whisper" id="sub-06" style="opacity:0;margin-top:0.75rem;"></p>
-          <div class="nbi-branch" id="branch-06">
-            <div>Qualifying expenditure</div>
-            <div>NMI payment</div>
+        <div class="act__frame" id="stage-04">
+          <p class="caption">From Code to Incentive</p>
+          <div class="tline" id="tline-04">
+            <div class="tnode" data-i="0"><strong>2020</strong><em>Code work</em></div>
+            <div class="tnode" data-i="1"><strong>2021</strong><em>Bargaining Code</em></div>
+            <div class="tnode" data-i="2"><strong>2021+</strong><em>Voluntary deals</em></div>
+            <div class="tnode" data-i="3"><strong>2024</strong><em>Pressure</em></div>
+            <div class="tnode" data-i="4"><strong>2026</strong><em>NBI / NMI</em></div>
           </div>
         </div>
-        <div class="act__hud">
-          <span data-sources="source-nbi-01,source-nbi-02,source-nbi-03"></span>
-          <button type="button" class="detail-btn" data-detail="nbi">Detail</button>
+        <div class="hud">
+          <span data-sources="source-code-01,source-code-02"></span>
+          <button type="button" class="more" data-detail="2021">Detail</button>
         </div>
       </div>
     </section>
 
-    <!-- 07 MONEY -->
-    <section class="act" id="act-07" data-act="act-07" style="--len:155vh;--len-m:135vh">
+    <!-- 05 2026 -->
+    <section class="act" id="act-05" data-act="act-05" style="--len:120vh;--len-m:110vh">
       <div class="act__pin">
-        <div class="act__stage" id="stage-07">
-          <p class="badge badge--illust" style="position:absolute;top:12%;">Illustrative</p>
-          <svg class="money" id="money-07" viewBox="0 0 320 420" aria-hidden="true">
-            <path id="moneyPath" d="M160 30 C160 90 160 90 160 130 C160 170 80 190 80 230 C80 270 160 290 160 330 C160 370 160 370 160 400" />
-            <circle class="dot" r="5" cx="160" cy="30" />
-            <circle class="dot" r="5" cx="160" cy="30" />
-            <circle class="dot" r="5" cx="160" cy="30" />
-            <circle class="dot" r="5" cx="160" cy="30" />
-            <text x="160" y="22" text-anchor="middle">Platform</text>
-            <text x="160" y="122" text-anchor="middle">NBI</text>
-            <text x="48" y="234" text-anchor="middle">Charge / offset</text>
-            <text x="160" y="322" text-anchor="middle">NJPS</text>
-            <text x="160" y="412" text-anchor="middle">Public</text>
-          </svg>
+        <div class="act__frame" id="stage-05">
+          <p class="num" id="num-05">2026</p>
+          <p class="caption">News Bargaining Incentive</p>
+          <p class="subcap">Charge + offset framework</p>
         </div>
-        <div class="act__hud">
-          <span data-sources="source-nbi-05"></span>
-          <button type="button" class="detail-btn" data-detail="money">Detail</button>
+        <div class="hud">
+          <span data-sources="source-nbi-01,source-nbi-02"></span>
         </div>
       </div>
     </section>
 
-    <!-- 08 EIGHT -->
-    <section class="act" id="act-08" data-act="act-08" style="--len:175vh;--len-m:150vh">
+    <!-- 06 2.75% -->
+    <section class="act" id="act-06" data-act="act-06" style="--len:130vh;--len-m:120vh">
       <div class="act__pin">
-        <div class="act__stage" id="stage-08">
-          <div class="eight-wrap" id="eight-08" aria-hidden="true">
-            <div class="eight-core" id="eight-core">1</div>
-            <div class="eight-dot">1</div><div class="eight-dot">2</div><div class="eight-dot">3</div><div class="eight-dot">4</div>
-            <div class="eight-dot">5</div><div class="eight-dot">6</div><div class="eight-dot">7</div><div class="eight-dot">8</div>
+        <div class="act__frame" id="stage-06">
+          <p class="tag tag--policy">Policy</p>
+          <div class="gauge" id="gauge-06" style="--p:0">
+            <div class="gauge__inner"><p class="num" id="rate-06">2.75%</p></div>
           </div>
-          <p class="cap25" id="cap-08">25%<br /><span style="font-size:0.35em;letter-spacing:0.12em;text-transform:uppercase;font-family:var(--font-u);">One group max</span></p>
+          <p class="caption">NMI charge rate</p>
+          <p class="subcap">Enacted · News Media Bargaining Charge Act 2026</p>
         </div>
-        <div class="act__hud">
+        <div class="hud">
+          <span data-sources="source-nbi-01,source-nbi-04"></span>
+          <button type="button" class="more" data-detail="rate">Detail</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 $250M+ -->
+    <section class="act" id="act-07" data-act="act-07" style="--len:130vh;--len-m:120vh">
+      <div class="act__pin">
+        <div class="act__frame" id="stage-07">
+          <p class="tag tag--policy">Policy</p>
+          <p class="num" id="thr-07">$250M+</p>
+          <p class="caption">Digital ad revenue threshold</p>
+          <p class="subcap">Relevant Australian digital advertising revenue</p>
+          <div class="meters" style="margin-top:0.5rem;max-width:18rem;">
+            <div class="meter is-loud" id="thr-bar" style="--w:0%"><span>Threshold</span><i></i></div>
+          </div>
+          <p class="caption" id="thr-line" style="opacity:0;">NBI applies</p>
+        </div>
+        <div class="hud">
+          <span data-sources="source-nbi-02"></span>
+          <button type="button" class="more" data-detail="threshold">Detail</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 TWO PATHS -->
+    <section class="act" id="act-08" data-act="act-08" style="--len:125vh;--len-m:115vh">
+      <div class="act__pin">
+        <div class="act__frame" id="stage-08">
+          <p class="caption">Two pathways</p>
+          <div class="paths" id="paths-08">
+            <div class="paths__box"><strong>Qualifying expenditure</strong><span class="tag">Offset</span></div>
+            <div class="paths__or">or</div>
+            <div class="paths__box"><strong>NMI payment</strong><span class="tag">Charge</span></div>
+          </div>
+          <p class="subcap">Platforms can reduce liability through eligible news support — or pay the charge</p>
+        </div>
+        <div class="hud">
           <span data-sources="source-nbi-02,source-nbi-03"></span>
-          <button type="button" class="detail-btn" data-detail="eight">Detail</button>
+          <button type="button" class="more" data-detail="paths">How?</button>
         </div>
       </div>
     </section>
 
-    <!-- 09 OUTCOME -->
-    <section class="act" id="act-09" data-act="act-09" style="--len:130vh;--len-m:120vh">
+    <!-- 09 8+ -->
+    <section class="act" id="act-09" data-act="act-09" style="--len:165vh;--len-m:145vh">
       <div class="act__pin">
-        <div class="act__stage" id="stage-09">
-          <div class="neq" id="neq-09">
-            <p class="badge badge--analysis">Our analysis</p>
-            <p class="a" id="neq-a">Policy design</p>
-            <p class="x">≠</p>
-            <p class="b" id="neq-b">Guaranteed outcome</p>
+        <div class="act__frame" id="stage-09">
+          <p class="tag tag--policy">Policy</p>
+          <div class="ring" id="ring-09" aria-hidden="true">
+            <div class="ring__core" id="ring-core">1</div>
+            <div class="ring__dot">1</div><div class="ring__dot">2</div><div class="ring__dot">3</div><div class="ring__dot">4</div>
+            <div class="ring__dot">5</div><div class="ring__dot">6</div><div class="ring__dot">7</div><div class="ring__dot">8</div>
           </div>
+          <p class="num" id="eight-num" style="font-size:clamp(2.5rem,8vw,4.5rem);">8+</p>
+          <p class="caption">News business groups</p>
+          <p class="subcap">Minimum for offset entitlement</p>
         </div>
-        <div class="act__hud">
-          <button type="button" class="detail-btn" data-detail="outcome">Detail</button>
+        <div class="hud">
+          <span data-sources="source-nbi-02,source-nbi-03"></span>
+          <button type="button" class="more" data-detail="eight">Detail</button>
         </div>
       </div>
     </section>
 
-    <!-- 10 TRANSPARENCY -->
-    <section class="act" id="act-10" data-act="act-10" style="--len:175vh;--len-m:150vh">
+    <!-- 10 25% -->
+    <section class="act" id="act-10" data-act="act-10" style="--len:125vh;--len-m:115vh">
       <div class="act__pin">
-        <div class="act__stage" id="stage-10">
-          <p class="giant" id="word-10" style="position:absolute;">TRANSPARENCY</p>
-          <div class="glass" id="glass-10" style="opacity:0;">
-            <div class="glass__layer" data-g="0">Opaque</div>
-            <div class="glass__layer" data-g="1">Numbers</div>
-            <div class="glass__layer" data-g="2">Publishers</div>
-            <div class="glass__layer" data-g="3">Verification</div>
-          </div>
-          <p class="whisper" id="ask-10" style="position:absolute;bottom:16%;opacity:0;"></p>
-          <div class="neq" id="disc-10" style="position:absolute;opacity:0;">
-            <p class="a">Disclosure</p>
-            <p class="x">≠</p>
-            <p class="b">Accountability</p>
+        <div class="act__frame" id="stage-10">
+          <p class="tag tag--policy">Policy</p>
+          <div class="pie-wrap">
+            <div class="pie" id="pie-10" aria-hidden="true"></div>
+            <p class="caption">One group — max</p>
+            <p class="subcap">Single corporate group share of NMI offset</p>
           </div>
         </div>
-        <div class="act__hud">
-          <p class="badge badge--analysis">Our analysis</p>
-          <button type="button" class="detail-btn" data-detail="transparency">Detail</button>
+        <div class="hud">
+          <span data-sources="source-nbi-03"></span>
+          <button type="button" class="more" data-detail="cap">Detail</button>
         </div>
       </div>
     </section>
 
-    <!-- 11 PROPOSAL -->
-    <section class="act" id="act-11" data-act="act-11" style="--len:145vh;--len-m:130vh">
+    <!-- 11 MONEY -->
+    <section class="act" id="act-11" data-act="act-11" style="--len:155vh;--len-m:140vh">
       <div class="act__pin">
-        <div class="act__stage" id="stage-11">
-          <p class="badge badge--proposal" style="position:absolute;top:14%;">Our proposal</p>
-          <div class="prop" id="prop-11">
+        <div class="act__frame" id="stage-11">
+          <p class="tag tag--illust">Illustrative</p>
+          <p class="caption">Follow the money</p>
+          <div class="ladder" id="ladder-11">
+            <div class="ladder__step">Platform</div>
+            <div class="ladder__arrow">↓</div>
+            <div class="ladder__step">NBI / NMI</div>
+            <div class="ladder__arrow">↓</div>
+            <div class="ladder__step">Charge / offset</div>
+            <div class="ladder__arrow">↓</div>
+            <div class="ladder__step">News Journalism Payment Scheme</div>
+            <div class="ladder__arrow">↓</div>
+            <div class="ladder__step">Newsrooms → journalists → public</div>
+          </div>
+        </div>
+        <div class="hud">
+          <span data-sources="source-nbi-05"></span>
+          <button type="button" class="more" data-detail="money">Detail</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 SCALE VS DIVERSITY -->
+    <section class="act" id="act-12" data-act="act-12" style="--len:130vh;--len-m:120vh">
+      <div class="act__pin">
+        <div class="act__frame" id="stage-12">
+          <p class="tag tag--analysis">Our analysis</p>
+          <div class="compare" aria-hidden="true">
+            <div class="compare__side">
+              <div class="compare__blob"></div>
+              <h3>Scale</h3>
+            </div>
+            <div class="compare__side">
+              <div class="compare__many">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+              <h3>Diversity</h3>
+            </div>
+          </div>
+          <p class="neq">Scale <span class="x">≠</span> Diversity</p>
+          <p class="subcap">Policy design ≠ guaranteed outcome</p>
+        </div>
+        <div class="hud">
+          <button type="button" class="more" data-detail="outcome">Detail</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13 TRANSPARENCY -->
+    <section class="act" id="act-13" data-act="act-13" style="--len:165vh;--len-m:145vh">
+      <div class="act__pin">
+        <div class="act__frame" id="stage-13">
+          <p class="tag tag--analysis">Our analysis</p>
+          <p class="caption" id="see-cap">Can we see it?</p>
+          <div class="glass" id="glass-13" aria-hidden="true">
+            <div class="glass__l" data-i="0">Black box</div>
+            <div class="glass__l" data-i="1">Numbers</div>
+            <div class="glass__l" data-i="2">Publishers</div>
+            <div class="glass__l" data-i="3">Verification</div>
+          </div>
+          <p class="neq" id="disc-13" style="opacity:0;">Disclosure <span class="x">≠</span> Accountability</p>
+        </div>
+        <div class="hud">
+          <button type="button" class="more" data-detail="transparency">Detail</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 14 PROPOSAL -->
+    <section class="act" id="act-14" data-act="act-14" style="--len:140vh;--len-m:125vh">
+      <div class="act__pin">
+        <div class="act__frame" id="stage-14">
+          <p class="tag tag--proposal">Our proposal</p>
+          <p class="caption">Voluntary transparency</p>
+          <div class="chain" id="chain-14">
             <span>Talk</span><i>→</i>
-            <span>Decision</span><i>→</i>
-            <span>Action</span><i>→</i>
+            <span>Decide</span><i>→</i>
             <span>Disclose</span><i>→</i>
             <span>Review</span><i>→</i>
             <span>Publish</span><i>→</i>
             <span>Include</span>
           </div>
+          <p class="subcap">Structure of major platform deals · independent review · public report</p>
         </div>
-        <div class="act__hud">
-          <button type="button" class="detail-btn" data-detail="proposal">Detail</button>
+        <div class="hud">
+          <button type="button" class="more" data-detail="proposal">Detail</button>
         </div>
       </div>
     </section>
 
-    <!-- 12 RETURN -->
-    <section class="act act--finale" id="act-12" data-act="act-12" style="--len:240vh;--len-m:200vh">
+    <!-- 15 RETURN -->
+    <section class="act act--finale" id="act-15" data-act="act-15" style="--len:150vh;--len-m:135vh">
       <div class="act__pin">
-        <div class="act__stage" id="stage-12">
-          <svg class="world" id="eco-12" viewBox="0 0 100 100" aria-hidden="true" style="opacity:0.35;position:absolute;">
-            <g class="links"></g><g class="nodes"></g>
-          </svg>
-          <p class="giant" id="q-12" style="position:relative;z-index:2;font-size:clamp(1.8rem,6vw,3.8rem);"></p>
+        <div class="act__frame" id="stage-15">
+          <p class="word" id="q-15" style="font-size:clamp(1.8rem,5.5vw,3.2rem);">Who gets to tell Australia’s story?</p>
+          <p class="caption" id="q2-15">Can we see who has the resources to keep telling it?</p>
         </div>
-        <div class="act__hud">
-          <a class="detail-btn" href="#evidence" style="text-decoration:none;display:inline-block;">Explore the evidence</a>
+        <div class="hud">
+          <a class="more" href="#evidence" style="text-decoration:none;">Explore the evidence</a>
         </div>
       </div>
     </section>
 
     <section class="evidence" id="evidence">
-      <p class="badge">Sources</p>
+      <p class="tag">Sources</p>
       <h2>Evidence</h2>
       <ul class="evidence-list" id="evidence-list"></ul>
     </section>
   </main>
 
   <footer class="foot">SMBA6005 group pitch · Australia 2026</footer>
-
   <script type="module" src="./assets/js/main.js"></script>
 </body>
 </html>
