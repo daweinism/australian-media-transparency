@@ -86,18 +86,41 @@ a { color: var(--euc); }
 .backdrop.is-on { opacity: 1; pointer-events: auto; }
 .drawer {
   position: fixed; top: 0; right: 0; z-index: 60; width: var(--drawer); height: 100%;
-  padding: 1.4rem; background: var(--bright); border-left: 1px solid var(--line);
+  padding: 1.5rem 1.4rem 2rem; background: var(--bright); border-left: 1px solid var(--line);
   transform: translateX(105%); transition: transform 0.4s var(--ease); overflow-y: auto;
 }
 .drawer.is-on { transform: translateX(0); }
+@media (max-width: 640px) {
+  .drawer {
+    top: auto; bottom: 0; right: 0; left: 0; width: 100%; height: min(78vh, 32rem);
+    border-left: 0; border-top: 1px solid var(--line);
+    transform: translateY(110%); border-radius: 0.75rem 0.75rem 0 0;
+  }
+  .drawer.is-on { transform: translateY(0); }
+}
 .drawer__x {
   appearance: none; border: 0; background: 0; cursor: pointer;
   font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--ink); padding: 0.25rem 0; margin-bottom: 0.9rem;
 }
 .drawer h2 {
-  font-family: var(--font-d); font-weight: 500; font-size: 1.3rem;
-  line-height: 1.2; margin: 0.35rem 0 0.9rem;
+  font-family: var(--font-d); font-weight: 500; font-size: 1.35rem;
+  line-height: 1.2; margin: 0.35rem 0 0.85rem;
+}
+.drawer .lead {
+  color: var(--ink); font-size: 0.95rem; line-height: 1.5; margin: 0 0 0.85rem;
+}
+.drawer .body {
+  color: var(--ink-2); font-size: 0.9rem; line-height: 1.55; margin: 0 0 0.75rem;
+}
+.drawer .takeaway {
+  margin: 1rem 0 0.9rem; padding: 0.75rem 0.85rem;
+  border-left: 3px solid var(--euc); background: rgba(58, 90, 73, 0.06);
+  font-size: 0.88rem; line-height: 1.45; color: var(--ink);
+}
+.drawer .takeaway strong {
+  display: block; font-size: 0.58rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--euc); margin-bottom: 0.25rem; font-weight: 600;
 }
 .drawer dl { display: grid; gap: 0.75rem; margin: 0 0 0.9rem; }
 .drawer dt { font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mute); margin: 0; }
@@ -117,9 +140,10 @@ a { color: var(--euc); }
 .cite:hover, .cite[aria-expanded="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 
 .more {
-  appearance: none; border: 1px solid var(--line); background: transparent;
-  padding: 0.38rem 0.6rem; font-size: 0.6rem; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--mute); cursor: pointer;
+  appearance: none; border: 1px solid var(--line); background: rgba(255, 252, 247, 0.85);
+  padding: 0.4rem 0.65rem; font-size: 0.58rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink-2); cursor: pointer;
+  white-space: nowrap;
 }
 .more:hover { color: var(--ink); border-color: var(--ink); }
 

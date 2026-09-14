@@ -1,16 +1,16 @@
 {
   "label": "POLICY DESIGN",
-  "name": "News Media Incentive (NMI) / News Bargaining Incentive",
+  "name": "News Bargaining Incentive (NBI)",
   "enactedChargeRate": {
     "value": "2.75%",
     "display": "2.75%",
-    "caption": "NMI CHARGE RATE",
+    "caption": "THE CHARGE",
     "note": "Enacted rate under s 3 News Media Bargaining Charge Act 2026. Earlier proposals used 2.5%; Parliament amended to 2.75%.",
     "sources": ["source-nbi-01", "source-nbi-04"]
   },
   "threshold": {
     "value": "$250M+",
-    "caption": "DIGITAL AD REVENUE THRESHOLD",
+    "caption": "AUSTRALIAN DIGITAL AD REVENUE",
     "sources": ["source-nbi-02", "source-nbi-03"]
   },
   "offset": {
@@ -21,7 +21,7 @@
     "sources": ["source-nbi-02", "source-nbi-03"]
   },
   "pathways": [
-    { "id": "offset", "label": "QUALIFYING EXPENDITURE" },
-    { "id": "charge", "label": "NMI PAYMENT" }
+    { "id": "offset", "label": "SPEND ON AUSTRALIAN NEWS" },
+    { "id": "charge", "label": "PAY THE CHARGE" }
   ]
 }

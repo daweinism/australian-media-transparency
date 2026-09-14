@@ -40,20 +40,28 @@ export class SourceSystem {
       <dl>
         <div><dt>Organisation</dt><dd>${esc(src.organisation)}</dd></div>
         <div><dt>Date</dt><dd>${esc(src.date)}</dd></div>
-        <div><dt>Type</dt><dd>${esc(src.type)}</dd></div>
         <div><dt>What this supports</dt><dd>${esc(src.supports)}</dd></div>
       </dl>
-      <p style="color:var(--ink-2);margin:0 0 0.75rem;">${esc(src.description)}</p>
-      <a class="drawer__go" href="${esc(src.url)}" target="_blank" rel="noopener noreferrer">Open source ↗</a>
+      <a class="drawer__go" href="${esc(src.url)}" target="_blank" rel="noopener noreferrer">Open source →</a>
     `, src.title);
-    document.querySelectorAll(".cite").forEach((c) => c.setAttribute("aria-expanded", String(c.dataset.sourceId === id)));
+    document.querySelectorAll(".cite").forEach((c) =>
+      c.setAttribute("aria-expanded", String(c.dataset.sourceId === id))
+    );
   }
 
   openDetail(key, trigger) {
     const d = this.details[key];
     if (!d) return;
     this.lastFocus = trigger || document.activeElement;
-    this._open(d.badge || "Detail", `<p style="color:var(--ink-2);margin:0;line-height:1.55;">${d.body}</p>${d.extra || ""}`, d.title);
+    const body = [
+      d.lead ? `<p class="lead">${d.lead}</p>` : "",
+      ...(d.paras || []).map((p) => `<p class="body">${p}</p>`),
+      d.takeaway
+        ? `<div class="takeaway"><strong>Key takeaway</strong>${d.takeaway}</div>`
+        : "",
+      d.extra || "",
+    ].join("");
+    this._open(d.badge || "Detail", body, d.title);
   }
 
   _open(badge, body, title) {
