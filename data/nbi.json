@@ -17,7 +17,7 @@
     "minimumGroups": 8,
     "groupsCaption": "NEWS BUSINESS GROUPS",
     "singleGroupCap": "25%",
-    "capCaption": "ONE GROUP — MAX",
+    "capCaption": "ONE GROUP MAX",
     "sources": ["source-nbi-02", "source-nbi-03"]
   },
   "pathways": [

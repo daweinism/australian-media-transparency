@@ -14,12 +14,12 @@ const DETAILS = {
   diversity: {
     badge: "Why this matters",
     title: "Why more than one kind of newsroom matters",
-    lead: "Media diversity means different owners, places and communities producing news — not just more articles from the same few organisations.",
+    lead: "Media diversity means different owners, places and communities producing news, including local, regional, independent, community and First Nations newsrooms.",
     paras: [
       "When one organisation produces most of the reporting in a region, fewer stories get told and fewer decisions get scrutinised.",
-      "Local, regional, independent, community and First Nations newsrooms each bring different priorities and audiences.",
+      "Different newsrooms bring different priorities and audiences to the same country.",
     ],
-    takeaway: "Diversity is about who is able to report, not only how much reporting exists.",
+    takeaway: "Diversity is about who is able to report, alongside how much reporting exists.",
   },
   resources: {
     badge: "Why this matters",
@@ -27,7 +27,7 @@ const DETAILS = {
     lead: "Journalism costs money: salaries, courts, councils, legal risk and time.",
     paras: [
       "Larger organisations can absorb those costs across many mastheads. Small and regional newsrooms often cannot.",
-      "The comparison on screen is a conceptual picture of capacity — not a measured market-share chart.",
+      "The comparison on screen is a conceptual picture of capacity. It is not a measured market-share chart.",
     ],
     takeaway: "Without resources, it is harder to keep covering communities.",
   },
@@ -39,7 +39,7 @@ const DETAILS = {
       "It allowed the Treasurer to designate a platform, which would then have to bargain with registered news businesses, with arbitration if talks failed.",
       "In practice, the threat of designation prompted commercial deals. No platform has ever been designated. When a platform later stepped back from deals, the framework had limited practical leverage.",
     ],
-    takeaway: "The 2021 system depended on designation and commercial deals — and could stall if a platform walked away.",
+    takeaway: "The 2021 system depended on designation and commercial deals, and could stall if a platform walked away.",
   },
   mechanism: {
     badge: "Legal detail",
@@ -57,9 +57,9 @@ const DETAILS = {
     title: "At least eight news business groups",
     lead: "To claim the offset, qualifying spending must involve at least eight different news business corporate groups.",
     paras: [
-      "The Parliamentary Library's Bills Digest describes this as designed to stop a platform satisfying the framework through deals with only one or two large publishers.",
+      "The Parliamentary Library's Bills Digest describes this as designed to encourage sustainability and diversity by spreading support beyond a small number of groups.",
     ],
-    takeaway: "Support must span multiple groups — not just the largest existing partners.",
+    takeaway: "Support must span multiple groups, including beyond the largest existing partners.",
   },
   cap: {
     badge: "Legal detail",
@@ -76,20 +76,20 @@ const DETAILS = {
     lead: "Two routes exist under the framework.",
     paras: [
       "Money spent directly on Australian news goes to news businesses under commercial arrangements.",
-      "Charge money goes to the Commonwealth and is directed to a news journalism payment scheme.",
+      "Charge money goes to the Commonwealth and is directed to the News Journalism Payment Scheme.",
       "What is not routinely published is the detail: which publishers received what, and how those amounts were decided.",
     ],
-    takeaway: "The pathway is clear; the public detail of who received what is not.",
+    takeaway: "The pathway is clear. The public detail of who received what is still limited.",
   },
   outcome: {
     badge: "Our analysis",
-    title: "Scale is not the same as diversity",
+    title: "Scale and diversity measure different things",
     lead: "The eight-group minimum and 25% cap widen participation compared with a small set of private deals.",
     paras: [
-      "They do not guarantee that support reaches regional, community, First Nations or independent newsrooms.",
-      "A platform could satisfy both rules using eight comparatively large groups. Whether the design produces diversity is an empirical question — and answering it requires data that is not currently published.",
+      "They still leave open whether support reaches regional, community, First Nations or independent newsrooms.",
+      "A platform could satisfy both rules using eight comparatively large groups. Whether the design produces diversity is an empirical question, and answering it requires data that is not currently published.",
     ],
-    takeaway: "More money does not automatically mean more perspectives.",
+    takeaway: "More money can support journalism. More participants can broaden perspectives.",
   },
   transparency: {
     badge: "Why this matters",
@@ -97,20 +97,20 @@ const DETAILS = {
     lead: "Commercial arrangements and offset calculations are typically not public.",
     paras: [
       "Without published amounts, recipients, allocation methods and independent checking, no one can test whether a diversity objective is being met.",
-      "Disclosure of numbers alone is not enough. Accountability also needs method, review and the ability to challenge.",
+      "Publishing a number helps. Publishing how the number was calculated, and who checked it, makes disclosure stronger.",
     ],
-    takeaway: "If the public cannot see it, the public cannot check whether it works.",
+    takeaway: "Disclosure becomes stronger when people can verify it.",
   },
   proposal: {
     badge: "Our proposal",
     title: "Disclose, verify, report, widen",
-    lead: "Our group's intervention: make the money easier for the public to check.",
+    lead: "Our group's intervention: make the flow of support easier to see and independently check.",
     paras: [
       "Voluntary public disclosure of aggregate amounts and recipient categories.",
       "Independent verification at arm's length from platforms and publishers.",
       "A plain-English annual public report, and deliberate inclusion of smaller, regional, community and First Nations newsrooms.",
     ],
-    takeaway: "None of this requires reopening the legislation — it requires publishing and checking.",
+    takeaway: "This is a proposal for voluntary disclosure and review. It does not reopen the legislation.",
   },
 };
 
@@ -138,8 +138,12 @@ const step = (p, n) => clamp(Math.floor(p * n), 0, n - 1);
 
 function initHero(el) {
   const cue = el.querySelector("#cue-01");
+  const orient = el.querySelector("#orient-01");
   return (p) => {
-    if (cue) cue.style.opacity = String(1 - clamp(p * 2.5, 0, 1));
+    if (cue) cue.style.opacity = String(1 - clamp(p * 2.8, 0, 1));
+    if (orient && !reduced) {
+      orient.style.transform = `scale(${1 + clamp(p, 0, 1) * 0.04})`;
+    }
   };
 }
 
@@ -147,13 +151,14 @@ function initVoices(el) {
   const wrap = el.querySelector("#voices-02");
   const head = el.querySelector("#head-02");
   const ex = el.querySelector("#ex-02");
+  const path = [...el.querySelectorAll("#path-02 span")];
   const cats = [
-    ["Metro", ""],
-    ["Regional", "paper--euc"],
     ["Local", ""],
+    ["Regional", "paper--euc"],
     ["Independent", "paper--och"],
     ["Community", "paper--euc"],
     ["First Nations", "paper--och"],
+    ["Metro", ""],
     ["Multicultural", ""],
   ];
   const nodes = cats.map(([t, m]) => {
@@ -162,23 +167,26 @@ function initVoices(el) {
     return v;
   });
   return (p) => {
-    const shown = clamp(Math.round(p * 8), 1, nodes.length);
+    const pathN = clamp(Math.round(clamp(p / 0.25, 0, 1) * path.length), 1, path.length);
+    path.forEach((s, i) => s.classList.toggle("is-on", i < pathN));
+
+    const shown = clamp(Math.round(clamp((p - 0.15) / 0.85, 0, 1) * 8), 1, nodes.length);
     nodes.forEach((n, i) => n.classList.toggle("is-on", i < shown));
     if (shown <= 1) {
       head.textContent = "One voice";
       ex.textContent = "Start with a single newsroom.";
     } else if (shown < nodes.length) {
       head.textContent = "More voices";
-      ex.textContent = "Different newsrooms bring different perspectives.";
+      ex.textContent = "Different communities bring different stories and priorities.";
     } else {
       head.textContent = "Many voices";
-      ex.textContent = "A stronger media ecosystem has more than one kind of newsroom.";
+      ex.textContent = "A stronger media ecosystem includes more than one kind of newsroom.";
     }
   };
 }
 
 function initResources(el) {
-  fillPeople(el.querySelector("#ppl-big"), 22);
+  fillPeople(el.querySelector("#ppl-big"), 20);
   fillPeople(el.querySelector("#ppl-small"), 3);
   return null;
 }
@@ -208,11 +216,12 @@ function initTimeline(el) {
       year.textContent = "2021";
       word.textContent = "Exit risk";
       sub.textContent = "What if a platform walks away?";
-      ex.textContent = "If a platform steps back, newsrooms lose a distribution channel — and audiences lose access.";
+      ex.textContent =
+        "If a platform steps back, people can lose a distribution channel, and news organisations can lose reach.";
     } else if (s === 3) {
       year.textContent = "Why change?";
       word.textContent = "Broken link";
-      sub.textContent = "The old system needed more leverage";
+      sub.textContent = "Why create an incentive?";
       ex.textContent = "Australia needed a stronger incentive for platforms to keep paying for news.";
     } else {
       year.textContent = "2026";
@@ -220,7 +229,8 @@ function initTimeline(el) {
       sub.textContent = "News Bargaining Incentive";
       deal.classList.remove("is-broken");
       plat.classList.remove("platform--alert");
-      ex.textContent = "A new way to create an incentive for deals — through a charge on very large platforms.";
+      ex.textContent =
+        "A new incentive for commercial deals, through a charge on very large platforms.";
     }
   };
 }
@@ -231,9 +241,13 @@ function initMechanism(el) {
   const head = el.querySelector("#head-05");
   const ex = el.querySelector("#ex-05");
   const v = el.querySelector("#v-05a");
+  let lastPane = -1;
   return (p) => {
     const pane = step(p, 3);
-    showPane(story, pane);
+    if (pane !== lastPane) {
+      showPane(story, pane);
+      lastPane = pane;
+    }
     if (pane === 0) {
       head.textContent = "Who does it apply to?";
       ex.textContent = "Only platforms with more than $250 million in Australian digital ad revenue.";
@@ -248,7 +262,7 @@ function initMechanism(el) {
       ex.textContent = "A percentage of that Australian digital ad revenue.";
     } else {
       head.textContent = "How can a platform respond?";
-      ex.textContent = "Spend on Australian news — or pay the charge.";
+      ex.textContent = "Spend on Australian news, or pay the charge.";
     }
   };
 }
@@ -273,8 +287,8 @@ function initEight(el) {
     lab.textContent = n === 1 ? "News business group" : "News business groups";
     ex.textContent =
       n < 8
-        ? "One or two deals with large publishers is not enough."
-        : "To reduce the charge, eligible spending must involve at least eight Australian news business groups.";
+        ? "Support starts to spread across more news business groups."
+        : "The offset requires eligible expenditure involving at least eight Australian news business corporate groups.";
   };
 }
 
@@ -284,6 +298,7 @@ function initCap(el) {
   const pct = el.querySelector("#pct-07");
   const lab = el.querySelector("#caplab-07");
   const ex = el.querySelector("#ex-07");
+  const restlab = el.querySelector("#restlab-07");
   rest.innerHTML = Array.from({ length: 6 }, () => "<i></i>").join("");
   const bars = [...rest.querySelectorAll("i")];
   return (p) => {
@@ -293,18 +308,19 @@ function initCap(el) {
     one.textContent = shown >= 12 ? "One group" : "";
     pct.textContent = `${shown}%`;
     const capped = grow >= 1;
-    lab.textContent = capped ? "One group — maximum 25%" : "One group tries to take…";
+    lab.textContent = capped ? "One group max 25%" : "One group fills…";
     const others = capped
       ? clamp(Math.round(((p - 0.45) / 0.55) * bars.length), 0, bars.length)
       : 0;
     bars.forEach((b, i) => b.classList.toggle("is-on", i < others));
+    if (restlab) restlab.style.opacity = capped ? "1" : "0.35";
     if (!capped) {
       ex.textContent = "One group tries to absorb the whole allocation.";
     } else if (others < bars.length) {
       ex.textContent = "It stops at 25%. Other news business groups fill the rest.";
     } else {
       ex.textContent =
-        "No single news business group can account for more than 25% of the offset.";
+        "One corporate group can account for no more than 25% of the NBI offset amount.";
     }
   };
 }
@@ -340,19 +356,24 @@ function initTransparency(el) {
   const rows = [...el.querySelectorAll(".box__row")];
   const lab = el.querySelector("#translab-10");
   const eye = el.querySelector("#eye-10");
+  const ex = el.querySelector("#ex-10");
   const answers = [
-    ["How much money", "Published"],
-    ["Which publishers", "Named"],
-    ["How it was split", "Itemised"],
-    ["How it was decided", "Explained"],
-    ["Checked by whom", "Independently verified"],
+    ["Amount", "Published"],
+    ["Recipient", "Named"],
+    ["Allocation", "Itemised"],
+    ["Method", "Explained"],
+    ["Verification", "Independently checked"],
   ];
   const chain = [...el.querySelectorAll("#chain-10 span")];
+  let lastPane = -1;
   return (p) => {
     const pane = p < 0.58 ? 0 : 1;
-    showPane(story, pane);
+    if (pane !== lastPane) {
+      showPane(story, pane);
+      lastPane = pane;
+    }
     if (pane === 0) {
-      eye.textContent = "Can we see what happens to the money?";
+      eye.textContent = "Where did the money go?";
       const open = clamp((p - 0.08) / 0.12, 0, 1);
       lid.style.opacity = String(1 - open);
       const n = clamp(Math.round(((p - 0.2) / 0.35) * rows.length), 0, rows.length);
@@ -361,12 +382,17 @@ function initTransparency(el) {
         r.classList.toggle("is-on", on);
         r.querySelector("b").textContent = on ? answers[i][1] : "?";
       });
-      lab.textContent =
-        p < 0.18
-          ? "Right now, much of this is not public"
-          : n < rows.length
-          ? "What transparency would show"
-          : "Disclosure → verification → accountability";
+      if (p < 0.18) {
+        lab.textContent = "Right now, much of this is not public";
+        ex.textContent =
+          "Publishing a number helps. Publishing how the number was calculated makes it easier to check.";
+      } else if (n < rows.length) {
+        lab.textContent = "What transparency would show";
+        ex.textContent = "Amount, recipient, allocation, method, and who checked it.";
+      } else {
+        lab.textContent = "Disclosure → verification → accountability";
+        ex.textContent = "Disclosure becomes stronger when people can verify it.";
+      }
     } else {
       eye.textContent = "Our proposal";
       const n = clamp(Math.round(((p - 0.58) / 0.42) * chain.length), 1, chain.length);
@@ -377,7 +403,7 @@ function initTransparency(el) {
 
 function initFinale(el) {
   const zoom = el.querySelector("#zoom-11");
-  const levels = ["Journalist", "Newsroom", "Publisher", "Media ecosystem", "Australia"];
+  const levels = ["Journalist", "Newsroom", "News business", "Media ecosystem", "Australia"];
   return (p) => {
     zoom.textContent = levels[step(p, levels.length)];
   };
@@ -400,7 +426,7 @@ async function main() {
     .map(
       (s, i) => `<li>
         <p class="org">${i + 1} · ${s.organisation} · ${s.date}</p>
-        <a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.title} →</a>
+        <a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.title.replaceAll("—", ":")} →</a>
       </li>`
     )
     .join("");

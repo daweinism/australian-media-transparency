@@ -1,4 +1,4 @@
-/* Concrete, teachable visuals — one idea per moment */
+/* Concrete, teachable visuals : one idea per moment */
 
 .act {
   position: relative;
@@ -23,13 +23,13 @@
   max-width: 100%;
   display: grid;
   justify-items: center;
-  gap: 0.75rem;
+  gap: 0.65rem;
   text-align: center;
   padding: 0.5rem;
   position: relative;
   z-index: 2;
 }
-.frame--hero { gap: 0.85rem; }
+.frame--hero { gap: 0.75rem; }
 
 /* Type */
 .eyebrow {
@@ -93,7 +93,7 @@
   padding: 0 0.5rem;
 }
 
-/* Story panes — swap states inside one sticky act */
+/* Story panes : swap states inside one sticky act */
 .story {
   width: 100%;
   position: relative;
@@ -463,11 +463,11 @@
 .neq {
   font-family: var(--font-d);
   font-weight: 500;
-  font-size: clamp(1.3rem, 4vw, 2.2rem);
-  line-height: 1.1;
+  font-size: clamp(1.15rem, 3.4vw, 1.85rem);
+  line-height: 1.15;
   margin: 0;
+  max-width: 22rem;
 }
-.neq .x { color: var(--alert); }
 
 /* Black box */
 .box {
@@ -549,11 +549,43 @@
 }
 .chain i { font-style: normal; color: var(--mute); opacity: 0.4; }
 
-/* Hero */
+/* Photo chapters: editorial overlays, readable text */
 .act--hero .act__pin {
   background:
-    linear-gradient(180deg, rgba(242, 236, 227, 0.78), rgba(242, 236, 227, 0.94)),
+    linear-gradient(180deg, rgba(242, 236, 227, 0.8), rgba(242, 236, 227, 0.94)),
     url("../img/visual-newsroom.jpg") center/cover no-repeat;
+}
+.act--voices .act__pin {
+  background:
+    linear-gradient(180deg, rgba(242, 236, 227, 0.88), rgba(242, 236, 227, 0.96)),
+    url("../img/visual-voices.jpg") center/cover no-repeat;
+}
+.act--2021 .act__pin {
+  background:
+    linear-gradient(180deg, rgba(242, 236, 227, 0.9), rgba(242, 236, 227, 0.97)),
+    url("../img/visual-newsroom.jpg") 30% 40%/cover no-repeat;
+}
+.act--money .act__pin {
+  background:
+    linear-gradient(180deg, rgba(242, 236, 227, 0.9), rgba(242, 236, 227, 0.97)),
+    url("../img/visual-money.jpg") center/cover no-repeat;
+}
+.act--glass .act__pin {
+  background:
+    linear-gradient(180deg, rgba(242, 236, 227, 0.9), rgba(242, 236, 227, 0.97)),
+    url("../img/visual-transparency.jpg") center/cover no-repeat;
+}
+.chain--soft {
+  margin-bottom: 0.15rem;
+}
+.chain--soft span {
+  padding: 0.35rem 0.5rem;
+  font-size: 0.52rem;
+  background: rgba(255, 252, 247, 0.7);
+}
+.alloc__cap span:nth-child(2) {
+  color: var(--euc);
+  transition: opacity 0.3s var(--ease);
 }
 .hero-title {
   font-family: var(--font-d);
@@ -616,7 +648,7 @@
   .frame { width: min(70vw, 52rem); }
 }
 
-/* Mobile — one idea, no collision */
+/* Mobile : one idea, no collision */
 @media (max-width: 700px) {
   .act { height: var(--len-m, var(--len, 140vh)); }
   .act__pin { padding: 0.5rem 0.5rem 3.8rem; }

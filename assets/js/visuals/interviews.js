@@ -61,7 +61,7 @@ export function initScenarios(root, data) {
 
   const note = document.createElement("p");
   note.className = "tag tag--scenario";
-  note.textContent = data.label + " — " + data.disclaimer;
+  note.textContent = data.label + " : " + data.disclaimer;
   wrap.before(note);
 
   data.scenarios.forEach((s, i) => {

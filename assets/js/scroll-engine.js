@@ -1,5 +1,6 @@
 /**
- * Lightweight progress tracker for sticky acts.
+ * Progress tracker for sticky acts.
+ * Native scrolling only. Animations respond to scroll; they never hijack it.
  */
 export class ScrollEngine {
   constructor({ reducedMotion = false } = {}) {
@@ -7,6 +8,8 @@ export class ScrollEngine {
     this.acts = new Map();
     this.active = null;
     this._onAct = [];
+    this._raf = 0;
+    this._pending = false;
   }
 
   onAct(cb) {
@@ -14,48 +17,58 @@ export class ScrollEngine {
   }
 
   register(id, el, onProgress) {
-    this.acts.set(id, { el, onProgress });
+    this.acts.set(id, { el, onProgress, lastP: -1 });
   }
 
   start() {
     const nodes = [...document.querySelectorAll("[data-act]")];
+
     const syncAct = () => {
-      const mid = window.innerHeight * 0.3;
+      const mid = window.innerHeight * 0.28;
       let best = null;
       let dist = Infinity;
-      nodes.forEach((n) => {
+      for (const n of nodes) {
         const r = n.getBoundingClientRect();
-        if (r.bottom < 0 || r.top > window.innerHeight) return;
+        if (r.bottom < 0 || r.top > window.innerHeight) continue;
         const c = r.top + Math.min(r.height, window.innerHeight) * 0.2;
         const d = Math.abs(c - mid);
         if (d < dist) {
           dist = d;
           best = n.getAttribute("data-act");
         }
-      });
+      }
       if (best && best !== this.active) {
         this.active = best;
-        this._onAct.forEach((cb) => cb(best));
+        for (const cb of this._onAct) cb(best);
       }
     };
 
-    let raf = null;
-    const loop = () => {
+    const tick = () => {
+      this._pending = false;
       this.acts.forEach((act) => {
         if (!act.onProgress) return;
         const r = act.el.getBoundingClientRect();
         const total = act.el.offsetHeight - window.innerHeight;
         if (total <= 0) return;
         if (r.bottom <= 0 || r.top >= window.innerHeight) return;
-        const p = Math.min(1, Math.max(0, -r.top / total));
-        act.onProgress(this.reducedMotion ? Math.round(p * 8) / 8 : p);
+        let p = Math.min(1, Math.max(0, -r.top / total));
+        if (this.reducedMotion) p = Math.round(p * 8) / 8;
+        if (Math.abs(p - act.lastP) < 0.004) return;
+        act.lastP = p;
+        act.onProgress(p);
       });
       syncAct();
-      raf = requestAnimationFrame(loop);
     };
-    raf = requestAnimationFrame(loop);
-    window.addEventListener("scroll", syncAct, { passive: true });
-    syncAct();
+
+    const schedule = () => {
+      if (this._pending) return;
+      this._pending = true;
+      this._raf = requestAnimationFrame(tick);
+    };
+
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule, { passive: true });
+    schedule();
   }
 }
 

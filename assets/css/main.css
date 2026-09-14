@@ -156,9 +156,13 @@ a { color: var(--euc); }
 .tag--illust { color: var(--mute); }
 
 .foot {
-  padding: 1.25rem 1rem 2.25rem; border-top: 1px solid var(--line);
-  font-size: 0.66rem; letter-spacing: 0.06em; color: var(--mute); text-align: center;
+  padding: 1.1rem 1rem 2rem; border-top: 1px solid var(--line);
+  font-size: 0.66rem; letter-spacing: 0.06em; color: var(--mute);
+  text-align: center; display: flex; flex-wrap: wrap; gap: 0.45rem;
+  justify-content: center; align-items: center;
 }
+.foot a { color: inherit; text-decoration: none; }
+.foot a:hover { color: var(--euc); }
 
 .evidence {
   padding: 3rem 1rem 2rem; max-width: 42rem; margin: 0 auto;

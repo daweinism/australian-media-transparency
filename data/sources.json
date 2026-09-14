@@ -52,7 +52,7 @@
   {
     "id": "source-nbi-03",
     "organisation": "Parliament of Australia",
-    "title": "News Media Bargaining (Administration) Bill 2026 [and related Bills] — Bills Digest",
+    "title": "News Media Bargaining (Administration) Bill 2026 [and related Bills] : Bills Digest",
     "date": "2026-08-20",
     "url": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/bd/bd2627/27bd011",
     "type": "primary",
@@ -62,7 +62,7 @@
   {
     "id": "source-nbi-04",
     "organisation": "Parliament of Australia",
-    "title": "News Media Bargaining Charge Bill 2026 — Explanatory Memorandum (Parliamentary Amendments)",
+    "title": "News Media Bargaining Charge Bill 2026 : Explanatory Memorandum (Parliamentary Amendments)",
     "date": "2026-08-20",
     "url": "https://parlinfo.aph.gov.au/parlInfo/search/display/display.w3p;query=Id%3A%22legislation%2Fems%2Fr7524_ems_58833e2e-6374-468c-80a0-2a5923fe16b1%22;rec=0",
     "type": "primary",
@@ -72,17 +72,17 @@
   {
     "id": "source-nbi-05",
     "organisation": "Parliament of Australia",
-    "title": "News Media Bargaining (Administration) Bill 2026 [and related Bills] — Bills Digest (revenue estimates)",
+    "title": "News Media Bargaining (Administration) Bill 2026 [and related Bills] : Bills Digest (revenue estimates)",
     "date": "2026-08-20",
     "url": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/bd/bd2627/27bd011",
     "type": "primary",
     "description": "Ministerial estimates quoted in the bills digest regarding expected media benefit under deals versus charge pathways.",
-    "supports": "Records government estimates of roughly $200–250 million via commercial dealings, or roughly $350–400 million per year if platforms pay the charge — and that charge receipts are directed to the News Journalism Payment Scheme."
+    "supports": "Records government estimates of roughly $200-250 million via commercial dealings, or roughly $350-400 million per year if platforms pay the charge, and that charge receipts are directed to the News Journalism Payment Scheme."
   },
   {
     "id": "source-treasury-01",
     "organisation": "Australian Competition and Consumer Commission",
-    "title": "Final legislation — News media bargaining code",
+    "title": "Final legislation : News media bargaining code",
     "date": "2021-02-25",
     "url": "https://www.accc.gov.au/by-industry/digital-platforms-and-services/news-media-bargaining-code/news-media-bargaining-code/final-legislation",
     "type": "primary",
