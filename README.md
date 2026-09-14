@@ -49,20 +49,21 @@ Asset paths are relative (`./assets/...`, `./data/...`) so project-site base pat
 
 ```
 /
-  index.html                 Full scrollytelling experience
+  index.html                 Visual essay experience
   README.md
   assets/
-    css/                     Design system + chapter visuals
-    js/                      Scroll engine, sources, visuals
+    css/                     Design system + chapter graphics
+    js/                      Scroll engine, sources, app logic
+    img/                     Editorial photo moments
   data/
     sources.json             Auditable citations
     timeline.json            2020–2026 context
     nbi.json                 Enacted NMI design figures
     ecosystem.json           Diversity categories (conceptual)
-    interviews.json          Interview metadata (placeholders)
+    interviews.json          Live interviews OR fallback briefing
     scenarios.json           Hypothetical pathways
   media/
-    interviews/              Drop audio / video here
+    interviews/              Drop audio / video here when ready
   .github/workflows/
     deploy.yml
 ```
@@ -90,10 +91,22 @@ In HTML, mark citations with:
 
 On load, these become clickable `[n]` markers that open the source drawer.
 
-## How to insert interviews
+## Interviews — live or fallback
 
-1. Add files to `media/interviews/` (e.g. `mda.mp3`, `mda.mp4`, `mda.txt`)
-2. Edit `data/interviews.json`:
+`data/interviews.json` supports both outcomes:
+
+| `mode` | Behaviour |
+| --- | --- |
+| `auto` (default) | Shows live players if any interview has `status: "ready"` and real media/quote; otherwise shows the stakeholder fallback briefing |
+| `fallback` | Always show the backup briefing (MDA / LINA focus, why it matters, questions we would ask, org links) |
+| `live` | Force the player UI (only when verified content is ready) |
+
+**If interviews do not happen:** leave `mode: "auto"` and `status: "pending"`. The site already shows a premium multimodal backup — no fake quotes.
+
+**If interviews arrive:**
+
+1. Add files to `media/interviews/` (e.g. `mda.mp3`, `mda.mp4`)
+2. Update the matching interview object:
 
 ```json
 {
@@ -111,7 +124,7 @@ On load, these become clickable `[n]` markers that open the source drawer.
 }
 ```
 
-Native `<audio controls>` and `<video controls>` are used. Optional YouTube/Vimeo embeds are supported via `embed`, but local files are preferred. Do **not** fabricate quotes.
+Native `<audio controls>` / `<video controls>` are used. Optional embeds via `embed`. Do **not** fabricate quotes.
 
 ## How to change content
 
@@ -125,15 +138,16 @@ Native `<audio controls>` and `<video controls>` are used. Optional YouTube/Vime
 | Visual behaviour | `assets/js/visuals/*` |
 | Look & feel | `assets/css/main.css`, `assets/css/chapters.css` |
 
-## Scroll engine
+## Scroll & visual approach
 
-`assets/js/scroll-engine.js` provides:
+The experience is closer to an **ABC News-style visual essay** than an endless sticky scrolly:
 
-1. **Chapter observer** — updates the quiet progress nav
-2. **Step observer** — activates sticky-scene narrative steps and drives visual state changes
-3. **Progress loop** — measures sticky section progress for continuous camera moments (hero, finale)
+- Short hero camera zoom into the media ecosystem
+- Each chapter pairs a **photo moment** and/or **infographic** with a short caption
+- Interactive boards (NBI steps, eight-group stepper, transparency layers, scenarios) replace long sticky narratives
+- Total scroll length is intentionally compressed so the story can be understood quickly without flooding readers with text
 
-Major visuals use sticky stages + scrolling steps. On small screens, sticky durations are shortened via CSS. `prefers-reduced-motion: reduce` disables parallax, particle travel and continuous camera scaling while preserving content.
+`assets/js/scroll-engine.js` still tracks chapter progress for the quiet nav and drives the hero zoom. Most other visuals activate on enter or via explicit controls (better for mobile and reduced-motion users).
 
 ## Analytical integrity
 

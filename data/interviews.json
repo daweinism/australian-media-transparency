@@ -1,7 +1,40 @@
 {
+  "mode": "auto",
   "sectionTitle": "Hear from the people working on it",
   "sectionSubtitle": "The people affected by media policy should help shape the conversation.",
-  "placeholderNote": "Interview slots are ready for verified multimedia. Do not fabricate quotes, names or findings.",
+  "fallback": {
+    "eyebrow": "Multimodal backup",
+    "title": "Stakeholder perspectives — ready either way",
+    "lede": "If verified interviews arrive, this section becomes audio, video and transcript. Until then, it stays a clear briefing on who we sought to hear from — and why their perspective matters.",
+    "statusLabel": "Interviews pending",
+    "statusNote": "No fabricated quotes. Replace placeholders in data/interviews.json and drop media into media/interviews/ when ready.",
+    "panels": [
+      {
+        "id": "mda",
+        "organisation": "Media Diversity Australia",
+        "focus": "Who appears in Australian news — and who produces it.",
+        "why": "Diversity claims only become meaningful when lived experience and industry practice can test them.",
+        "ask": [
+          "What does meaningful media diversity look like in practice?",
+          "What would make platform–publisher arrangements more accountable to diverse audiences?"
+        ],
+        "linkLabel": "Learn about MDA",
+        "linkUrl": "https://www.mediadiversityaustralia.org/"
+      },
+      {
+        "id": "lina",
+        "organisation": "LINA — Local & Independent News Association",
+        "focus": "Local and independent newsrooms sustaining public-interest reporting.",
+        "why": "Bargaining and incentive design land differently for smaller publishers than for large corporate groups.",
+        "ask": [
+          "How do local and independent outlets experience bargaining power in practice?",
+          "What transparency would help smaller publishers assess whether support is reaching them?"
+        ],
+        "linkLabel": "Learn about LINA",
+        "linkUrl": "https://www.lina.org.au/"
+      }
+    ]
+  },
   "interviews": [
     {
       "id": "mda",
