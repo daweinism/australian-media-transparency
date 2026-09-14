@@ -1,0 +1,58 @@
+{
+  "label": "POLICY DESIGN",
+  "name": "News Media Incentive (NMI) / News Bargaining Incentive",
+  "enactedChargeRate": {
+    "value": "2.75%",
+    "note": "Rate imposed by the News Media Bargaining Charge Act 2026",
+    "sources": ["source-nbi-01", "source-nbi-04"]
+  },
+  "threshold": {
+    "value": "$250 million",
+    "metric": "relevant Australian digital advertising revenue for the financial year",
+    "sources": ["source-nbi-02", "source-nbi-03"]
+  },
+  "offset": {
+    "minimumGroups": 8,
+    "groupRule": "new eligible expenditure in relation to at least 8 different news business corporate groups",
+    "singleGroupCap": "25%",
+    "singleGroupRule": "a parent entity may not use so much of a particular adjusted total as exceeds one quarter (25%) of the NMI amount payable",
+    "sources": ["source-nbi-02", "source-nbi-03"]
+  },
+  "pathways": [
+    {
+      "id": "qualifying-expenditure",
+      "title": "Qualifying news expenditure / commercial deals",
+      "description": "Eligible expenditure supporting registered Australian news businesses can offset NMI liability."
+    },
+    {
+      "id": "nbi-payment",
+      "title": "NMI charge payment",
+      "description": "Liability not offset through eligible expenditure is payable as charge and directed to the News Journalism Payment Scheme."
+    }
+  ],
+  "estimates": {
+    "label": "STAKEHOLDER CLAIM",
+    "deals": "$200–250 million",
+    "charge": "$350–400 million per year",
+    "note": "Ministerial estimates recorded in the Parliamentary Library bills digest — not independently verified outcomes.",
+    "sources": ["source-nbi-05"]
+  },
+  "distinctions": [
+    {
+      "id": "design",
+      "label": "POLICY DESIGN",
+      "text": "How the mechanism is structured in legislation."
+    },
+    {
+      "id": "intent",
+      "label": "POLICY INTENT",
+      "text": "What the framework is intended to encourage."
+    },
+    {
+      "id": "outcome",
+      "label": "POTENTIAL OUTCOME",
+      "text": "What may result in practice — not guaranteed by design alone."
+    }
+  ],
+  "caveat": "The NBI / NMI mechanism is designed to encourage support across a broader range of news businesses. It does not guarantee diverse journalism outcomes."
+}

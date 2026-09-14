@@ -1,0 +1,24 @@
+{
+  "label": "SCENARIOS",
+  "disclaimer": "These are hypothetical pathways for discussion — not predictions or forecasts.",
+  "scenarios": [
+    {
+      "id": "concentrated",
+      "title": "Support remains concentrated",
+      "summary": "Eligible expenditure and offsets cluster among a smaller set of larger news-business groups, even while meeting formal minimums.",
+      "tone": "risk"
+    },
+    {
+      "id": "broader",
+      "title": "Support reaches a broader range",
+      "summary": "Commercial deals and/or payment-scheme flows extend across a wider mix of news-business corporate groups.",
+      "tone": "support"
+    },
+    {
+      "id": "sustainable",
+      "title": "Smaller / regional / independent publishers become more sustainable",
+      "summary": "Resources reach newsrooms that expand local, community and public-interest capacity over time.",
+      "tone": "aspirational"
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "id": "source-code-01",
+    "organisation": "Parliament of Australia",
+    "title": "Treasury Laws Amendment (News Media and Digital Platforms Mandatory Bargaining Code) Bill 2021",
+    "date": "2021-02-25",
+    "url": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r6652",
+    "type": "primary",
+    "description": "Parliamentary record for the 2021 Mandatory Bargaining Code legislation, including passage dates and Act details.",
+    "supports": "The Code was finally passed by both Houses on 25 February 2021 and received assent as Act No. 21 of 2021, commencing 2 March 2021."
+  },
+  {
+    "id": "source-code-02",
+    "organisation": "Australian Competition and Consumer Commission",
+    "title": "News media bargaining code",
+    "date": "2021-03-02",
+    "url": "https://www.accc.gov.au/by-industry/digital-platforms-and-services/news-media-bargaining-code/news-media-bargaining-code",
+    "type": "primary",
+    "description": "ACCC overview of the Mandatory Bargaining Code framework and designation status.",
+    "supports": "The Code addresses bargaining power imbalances between Australian news businesses and designated digital platforms. No digital platforms have yet been designated under the Code."
+  },
+  {
+    "id": "source-code-03",
+    "organisation": "Federal Register of Legislation",
+    "title": "Treasury Laws Amendment (News Media and Digital Platforms Mandatory Bargaining Code) Act 2021",
+    "date": "2021-03-02",
+    "url": "https://www.legislation.gov.au/C2021A00021",
+    "type": "primary",
+    "description": "Authoritative text of the 2021 Act establishing the Mandatory Bargaining Code.",
+    "supports": "Legal establishment of a mandatory code governing commercial relationships between Australian news businesses and designated digital platform corporations."
+  },
+  {
+    "id": "source-nbi-01",
+    "organisation": "Federal Register of Legislation",
+    "title": "News Media Bargaining Charge Act 2026",
+    "date": "2026-08-26",
+    "url": "https://www.legislation.gov.au/C2026A00078/asmade/text",
+    "type": "primary",
+    "description": "Enacted legislation imposing the news media bargaining charge.",
+    "supports": "The rate of charge is 2.75% (section 3). Assented to 26 August 2026; commenced with the Administration Act on 27 August 2026."
+  },
+  {
+    "id": "source-nbi-02",
+    "organisation": "Federal Register of Legislation",
+    "title": "News Media Bargaining (Administration) Act 2026",
+    "date": "2026-08-26",
+    "url": "https://www.legislation.gov.au/C2026A00077/asmade/text",
+    "type": "primary",
+    "description": "Enacted administration framework for the News Media Incentive charge, offsets and eligibility.",
+    "supports": "Sets the $250 million relevant Australian digital advertising revenue threshold; requires eligible expenditure with at least 8 different news business corporate groups for offset entitlement; and limits any one group's adjusted contribution to one quarter (25%) of the NMI amount."
+  },
+  {
+    "id": "source-nbi-03",
+    "organisation": "Parliament of Australia",
+    "title": "News Media Bargaining (Administration) Bill 2026 [and related Bills] — Bills Digest",
+    "date": "2026-08-20",
+    "url": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/bd/bd2627/27bd011",
+    "type": "primary",
+    "description": "Parliamentary Library bills digest explaining the NMI framework, offset calculation and policy rationale.",
+    "supports": "Explains the 8-group minimum as designed to encourage sustainability and diversity by preventing offset through only a small number of groups, and documents the 25% single-group cap in offset calculation."
+  },
+  {
+    "id": "source-nbi-04",
+    "organisation": "Parliament of Australia",
+    "title": "News Media Bargaining Charge Bill 2026 — Explanatory Memorandum (Parliamentary Amendments)",
+    "date": "2026-08-20",
+    "url": "https://parlinfo.aph.gov.au/parlInfo/search/display/display.w3p;query=Id%3A%22legislation%2Fems%2Fr7524_ems_58833e2e-6374-468c-80a0-2a5923fe16b1%22;rec=0",
+    "type": "primary",
+    "description": "Explanatory memorandum for parliamentary amendments increasing the NMI rate.",
+    "supports": "Documents the move from a 2.5% design rate to an enacted 2.75% rate, reflecting market changes since 2021 deals."
+  },
+  {
+    "id": "source-nbi-05",
+    "organisation": "Parliament of Australia",
+    "title": "News Media Bargaining (Administration) Bill 2026 [and related Bills] — Bills Digest (revenue estimates)",
+    "date": "2026-08-20",
+    "url": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/bd/bd2627/27bd011",
+    "type": "primary",
+    "description": "Ministerial estimates quoted in the bills digest regarding expected media benefit under deals versus charge pathways.",
+    "supports": "Records government estimates of roughly $200–250 million via commercial dealings, or roughly $350–400 million per year if platforms pay the charge — and that charge receipts are directed to the News Journalism Payment Scheme."
+  },
+  {
+    "id": "source-treasury-01",
+    "organisation": "Australian Competition and Consumer Commission",
+    "title": "Final legislation — News media bargaining code",
+    "date": "2021-02-25",
+    "url": "https://www.accc.gov.au/by-industry/digital-platforms-and-services/news-media-bargaining-code/news-media-bargaining-code/final-legislation",
+    "type": "primary",
+    "description": "ACCC page linking to final 2021 legislation as passed.",
+    "supports": "Confirms final passage of the Mandatory Bargaining Code legislation on 25 February 2021."
+  }
+]

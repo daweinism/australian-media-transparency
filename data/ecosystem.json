@@ -1,0 +1,38 @@
+{
+  "categories": [
+    { "id": "first-nations", "label": "First Nations", "hue": "eucalyptus" },
+    { "id": "regional", "label": "Regional", "hue": "ochre" },
+    { "id": "local", "label": "Local", "hue": "ink" },
+    { "id": "independent", "label": "Independent", "hue": "eucalyptus" },
+    { "id": "community", "label": "Community", "hue": "ochre" },
+    { "id": "cultural", "label": "Cultural", "hue": "ink" },
+    { "id": "disability", "label": "Disability", "hue": "eucalyptus" },
+    { "id": "migrant", "label": "Migrant", "hue": "ochre" },
+    { "id": "lgbtqia", "label": "LGBTQIA+", "hue": "ink" },
+    { "id": "socioeconomic", "label": "Socioeconomic", "hue": "eucalyptus" }
+  ],
+  "diversityConcepts": [
+    { "id": "representation", "text": "Representation" },
+    { "id": "perspectives", "text": "Multiple perspectives" },
+    { "id": "local", "text": "Local reporting" },
+    { "id": "public-interest", "text": "Public-interest journalism" },
+    { "id": "accountability", "text": "Democratic accountability" }
+  ],
+  "voiceModel": {
+    "label": "ILLUSTRATIVE MODEL",
+    "disclaimer": "This visualisation is conceptual. It does not depict measured real-world audience share or representation statistics.",
+    "questions": [
+      "Who is easy to hear?",
+      "Who is harder to hear?",
+      "Who has the resources to keep speaking?"
+    ]
+  },
+  "scaleLevels": [
+    { "id": "story", "label": "One story" },
+    { "id": "journalist", "label": "One journalist" },
+    { "id": "newsroom", "label": "One newsroom" },
+    { "id": "publisher", "label": "One publisher" },
+    { "id": "ecosystem", "label": "Media ecosystem" },
+    { "id": "society", "label": "Australian society" }
+  ]
+}

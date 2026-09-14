@@ -1,0 +1,44 @@
+[
+  {
+    "id": "t-2020",
+    "year": "2020",
+    "title": "Code development",
+    "label": "FACT",
+    "summary": "The Australian Government asked the ACCC to develop a mandatory code addressing bargaining power imbalances between Australian news media businesses and digital platforms.",
+    "sources": ["source-code-02"]
+  },
+  {
+    "id": "t-2021-enact",
+    "year": "2021",
+    "title": "Mandatory Bargaining Code enacted",
+    "label": "FACT",
+    "summary": "The News Media and Digital Platforms Mandatory Bargaining Code was passed by both Houses on 25 February 2021 and came into effect on 2 March 2021.",
+    "detail": "The framework addressed bargaining power imbalances between Australian news businesses and major digital platforms.",
+    "sources": ["source-code-01", "source-code-02", "source-code-03"]
+  },
+  {
+    "id": "t-2021-deals",
+    "year": "2021+",
+    "title": "Voluntary commercial agreements",
+    "label": "FACT",
+    "summary": "No digital platforms were formally designated under the Code. The existence of the framework contributed to Google and Meta entering voluntary commercial agreements with Australian news organisations.",
+    "sources": ["source-code-02"]
+  },
+  {
+    "id": "t-2024",
+    "year": "2024",
+    "title": "Pressure on the 2021 settlement",
+    "label": "CONTEXT",
+    "summary": "Commercial arrangements struck in the shadow of the Code faced sustainability questions as platform strategies and newsroom economics continued to shift.",
+    "detail": "Exact commercial terms of platform–publisher agreements were generally not public.",
+    "sources": []
+  },
+  {
+    "id": "t-2026",
+    "year": "2026",
+    "title": "News Bargaining Incentive / NMI",
+    "label": "POLICY",
+    "summary": "Parliament enacted the News Media Bargaining Charge Act 2026 and Administration Act, creating a charge–offset framework keyed to relevant Australian digital advertising revenue.",
+    "sources": ["source-nbi-01", "source-nbi-02", "source-nbi-03"]
+  }
+]

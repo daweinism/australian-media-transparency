@@ -1,0 +1,8 @@
+# Drop verified interview media here.
+# Example:
+#   mda.mp3
+#   mda.mp4
+#   mda-transcript.txt
+#
+# Then update data/interviews.json with relative paths such as:
+#   "./media/interviews/mda.mp3"

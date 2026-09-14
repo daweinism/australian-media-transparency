@@ -1,0 +1,33 @@
+{
+  "sectionTitle": "Hear from the people working on it",
+  "sectionSubtitle": "The people affected by media policy should help shape the conversation.",
+  "placeholderNote": "Interview slots are ready for verified multimedia. Do not fabricate quotes, names or findings.",
+  "interviews": [
+    {
+      "id": "mda",
+      "organisation": "Media Diversity Australia",
+      "name": "[INSERT SPEAKER NAME]",
+      "role": "[INSERT ROLE]",
+      "quote": "[INSERT VERIFIED INTERVIEW QUOTE]",
+      "audio": "",
+      "video": "",
+      "embed": "",
+      "transcript": "[INSERT TRANSCRIPT]",
+      "portrait": "",
+      "status": "pending"
+    },
+    {
+      "id": "lina",
+      "organisation": "LINA — Local & Independent News Association",
+      "name": "[INSERT SPEAKER NAME]",
+      "role": "[INSERT ROLE]",
+      "quote": "[INSERT VERIFIED INTERVIEW QUOTE]",
+      "audio": "",
+      "video": "",
+      "embed": "",
+      "transcript": "[INSERT TRANSCRIPT]",
+      "portrait": "",
+      "status": "pending"
+    }
+  ]
+}
