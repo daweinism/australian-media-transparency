@@ -715,56 +715,80 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.35rem 0.4rem;
+  justify-content: center;
+  gap: 0.35rem 0.45rem;
   width: 100%;
+  min-width: 0;
   padding: 0.45rem 0;
 }
 .fork__steps > i {
+  flex: 0 0 auto;
   font-style: normal;
   color: var(--mute);
   font-size: 0.75rem;
   opacity: 0.65;
+  line-height: 1;
 }
 .fork__ico {
-  display: grid;
-  place-items: center;
-  font-size: 0.52rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  line-height: 1.2;
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  min-width: 0;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  font-size: clamp(0.48rem, 1.35vw, 0.54rem);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1.1;
 }
-.fork__ico.platform {
-  width: 2.6rem;
-  height: 1.65rem;
-  padding: 0.2rem;
-  font-size: 0.46rem;
+.fork__ico__label {
+  display: block;
+  max-width: 100%;
+  white-space: nowrap;
 }
-.fork__ico.paper {
-  width: 2.1rem;
-  height: 2.35rem;
-  padding: 0.18rem;
+.fork__ico--plat {
+  width: fit-content;
+  min-width: 3.5rem;
+  max-width: 100%;
+  min-height: 2rem;
+  padding: 0.4rem 0.65rem;
+  background: var(--ink);
+  color: var(--paper);
+}
+.fork__ico--news {
+  width: clamp(2.15rem, 6vw, 2.45rem);
+  min-height: 2.45rem;
+  padding: 0.28rem 0.22rem 0.22rem;
   background: var(--bright);
   border: 1px solid var(--line);
+  border-top: 3px solid var(--euc);
 }
-.fork__ico.paper b { height: 0.2rem; }
-.fork__ico.paper i { height: 0.12rem; }
+.fork__ico--news .fork__ico__label {
+  font-size: clamp(0.46rem, 1.2vw, 0.52rem);
+}
 .fork__ico--pay {
-  width: 2.1rem;
-  height: 2.1rem;
+  width: clamp(2.1rem, 6vw, 2.35rem);
+  min-height: clamp(2.1rem, 6vw, 2.35rem);
+  padding: 0.35rem;
   border-radius: 50%;
   background: var(--ochre);
   color: var(--bright);
   font-weight: 600;
 }
 .fork__ico--end {
-  padding: 0.35rem 0.5rem;
+  padding: 0.38rem 0.55rem;
   border: 1px solid var(--line);
   background: var(--paper);
   font-weight: 600;
   color: var(--ink);
 }
-.fork__ico--wide { font-size: 0.46rem; line-height: 1.25; max-width: 4.2rem; }
+.fork__ico--wide { max-width: 4.6rem; }
+.fork__ico--wide .fork__ico__label {
+  white-space: normal;
+  line-height: 1.25;
+}
 
 /* Legacy pipe kept unused */
 .pipe { display: none; }
