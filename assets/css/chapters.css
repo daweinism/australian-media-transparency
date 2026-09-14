@@ -230,6 +230,7 @@
   min-width: 4.6rem;
   opacity: 0.32;
   transform: translateY(4px);
+  cursor: default;
   transition: opacity 0.35s var(--ease), transform 0.35s var(--ease), border-color 0.35s var(--ease);
 }
 .cat-pill.is-on {
@@ -469,6 +470,7 @@
   gap: 0.35rem;
   justify-items: center;
   align-content: start;
+  cursor: default;
 }
 .path strong {
   font-size: 0.62rem;
@@ -888,20 +890,23 @@
   max-width: 36rem;
 }
 .chain span {
-  padding: 0.55rem 0.65rem;
-  border: 1px solid var(--line);
+  padding: 0.15rem 0.2rem;
+  border: 0;
+  border-bottom: 2px solid transparent;
   font-size: 0.58rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  opacity: 0.22;
-  transition: opacity 0.3s var(--ease), background 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease);
-  background: var(--bright);
+  opacity: 0.28;
+  cursor: default;
+  transition: opacity 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease);
+  background: transparent;
 }
 .chain span.is-on {
   opacity: 1;
-  background: var(--euc);
-  border-color: var(--euc);
-  color: var(--paper);
+  color: var(--euc);
+  font-weight: 600;
+  border-bottom-color: var(--euc);
+  background: transparent;
 }
 .chain i { font-style: normal; color: var(--mute); opacity: 0.4; }
 
@@ -947,9 +952,17 @@
   margin-bottom: 0.15rem;
 }
 .chain--soft span {
-  padding: 0.35rem 0.5rem;
+  padding: 0.12rem 0.18rem;
   font-size: 0.52rem;
-  background: rgba(255, 252, 247, 0.7);
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  cursor: default;
+}
+.chain--soft span.is-on {
+  color: var(--ink);
+  font-weight: 600;
+  border-bottom-color: var(--euc);
 }
 .alloc__cap span:nth-child(2) {
   color: var(--euc);
@@ -976,10 +989,9 @@
   font-size: clamp(0.58rem, 1.6vw, 0.64rem);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--ink-2);
-  border: 1px solid var(--line);
-  padding: 0.38rem 0.55rem;
-  background: rgba(255, 252, 247, 0.78);
+  color: var(--mute);
+  padding: 0.15rem 0.25rem;
+  cursor: default;
 }
 .orient {
   display: flex;
@@ -1031,7 +1043,7 @@
 @media (max-width: 700px) {
   .act { height: var(--len-m, var(--len, 140vh)); }
   .act__pin {
-    padding: 0.45rem 1rem 4.4rem;
+    padding: 0.45rem 2.15rem 4.4rem 1rem;
     min-height: 92svh;
     height: 92svh;
   }
@@ -1116,7 +1128,7 @@
   .voice .paper { width: 2.8rem; }
   .cap8__tile span { font-size: 0.52rem; max-width: 3.6rem; }
   .story { min-height: 10rem; }
-  .hud { bottom: 2.85rem; }
+  .hud { bottom: 0.85rem; }
   .rail { z-index: 30; }
 }
 @media (max-width: 380px) {

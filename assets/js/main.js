@@ -490,8 +490,8 @@ async function main() {
   const acts = [...document.querySelectorAll("[data-act]")];
   rail.innerHTML = acts
     .map(
-      (a) =>
-        `<a href="#${a.id}" data-id="${a.id}" data-l="${a.dataset.label || ""}"><span class="sr-only">${a.dataset.label || a.id}</span></a>`
+      (a, i) =>
+        `<a href="#${a.id}" class="rail__link" data-id="${a.id}" data-l="${a.dataset.label || ""}" aria-label="${a.dataset.label || a.id}"><span class="rail__num">${String(i + 1).padStart(2, "0")}</span><span class="rail__dot" aria-hidden="true"></span><span class="rail__label">${a.dataset.label || ""}</span></a>`
     )
     .join("");
 

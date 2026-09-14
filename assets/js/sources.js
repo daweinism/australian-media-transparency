@@ -20,7 +20,7 @@ export class SourceSystem {
         if (!src) return;
         const btn = document.createElement("button");
         btn.type = "button";
-        btn.className = "cite";
+        btn.className = "cite interactive-control";
         btn.textContent = String(src.index);
         btn.setAttribute("aria-label", `Source ${src.index}`);
         btn.setAttribute("aria-expanded", "false");
@@ -42,7 +42,7 @@ export class SourceSystem {
         <div><dt>Date</dt><dd>${esc(src.date)}</dd></div>
         <div><dt>What this supports</dt><dd>${esc(src.supports)}</dd></div>
       </dl>
-      <a class="drawer__go" href="${esc(src.url)}" target="_blank" rel="noopener noreferrer">Open source →</a>
+      <a class="drawer__go interactive-control" href="${esc(src.url)}" target="_blank" rel="noopener noreferrer">Open source →</a>
     `, src.title);
     document.querySelectorAll(".cite").forEach((c) =>
       c.setAttribute("aria-expanded", String(c.dataset.sourceId === id))
@@ -66,7 +66,7 @@ export class SourceSystem {
 
   _open(badge, body, title) {
     this.drawer.innerHTML = `
-      <button type="button" class="drawer__x" data-close>Close</button>
+      <button type="button" class="drawer__x interactive-control" data-close aria-label="Close">× Close</button>
       <p class="tag">${esc(badge)}</p>
       <h2 id="drawer-title">${esc(title)}</h2>
       ${body}
