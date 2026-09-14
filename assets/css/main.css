@@ -19,6 +19,10 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+/* Scale the whole composition on large displays so diagrams keep visual weight */
+@media (min-width: 1500px) { html { font-size: 19px; } }
+@media (min-width: 1900px) { html { font-size: 22px; } }
+@media (min-width: 2400px) { html { font-size: 26px; } }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
