@@ -3,20 +3,31 @@
 .act {
   position: relative;
   height: var(--len, 150vh);
+  isolation: isolate;
+}
+.act.is-active {
+  z-index: 2;
 }
 .act__pin {
   position: sticky;
   top: 0;
   min-height: 100vh;
   height: 100vh;
+  min-height: 100dvh;
+  height: 100dvh;
   display: grid;
   place-items: center;
   overflow: hidden;
   padding: 0.75rem 0.75rem 3.5rem;
+  padding-bottom: calc(3.5rem + env(safe-area-inset-bottom, 0px));
   background:
     radial-gradient(ellipse at 18% 10%, rgba(58, 90, 73, 0.06), transparent 48%),
     radial-gradient(ellipse at 88% 90%, rgba(176, 122, 54, 0.05), transparent 44%),
     var(--paper);
+  background-color: var(--paper);
+  z-index: 1;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 .frame {
   width: min(94vw, 42rem);
@@ -1140,9 +1151,14 @@
 @media (max-width: 700px) {
   .act { height: var(--len-m, var(--len, 140vh)); }
   .act__pin {
-    padding: 0.45rem 2.15rem 4.4rem 1rem;
-    min-height: 92svh;
-    height: 92svh;
+    /* Full viewport cover so the next chapter cannot peek underneath */
+    top: 0;
+    padding: 0.45rem 2.15rem max(0.85rem, env(safe-area-inset-bottom, 0px)) 1rem;
+    min-height: 100svh;
+    height: 100svh;
+    min-height: 100dvh;
+    height: 100dvh;
+    max-height: 100dvh;
   }
   .frame { width: 100%; max-width: 26rem; gap: 0.55rem; padding: 0.15rem; }
   .voices--desk { display: none; }
@@ -1246,8 +1262,23 @@
   .chain span {
     transition-duration: 0.45s;
   }
-  .hud { bottom: 0.85rem; }
-  .rail { z-index: 30; }
+  .hud {
+    bottom: max(0.75rem, env(safe-area-inset-bottom, 0px));
+  }
+  .rail {
+    z-index: 30;
+    max-height: min(68dvh, 20rem);
+  }
+  /* Keep photo chapters fully covering the viewport while sticky */
+  .act--hero .act__pin,
+  .act--voices .act__pin,
+  .act--resources .act__pin,
+  .act--2021 .act__pin,
+  .act--money .act__pin,
+  .act--glass .act__pin,
+  .act--finale .act__pin {
+    background-color: var(--paper);
+  }
 }
 @media (max-width: 380px) {
   .grid8, .cap8 { grid-template-columns: repeat(4, auto); gap: 0.35rem; }

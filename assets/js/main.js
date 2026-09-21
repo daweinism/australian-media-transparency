@@ -1,5 +1,5 @@
 import { SourceSystem } from "./sources.js";
-import { ScrollEngine, clamp } from "./scroll-engine.js";
+import { ScrollEngine, clamp, smoothstep } from "./scroll-engine.js";
 
 const BASE = new URL("../../", import.meta.url);
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -151,18 +151,33 @@ function showPane(root, index) {
 
 const step = (p, n) => clamp(Math.floor(p * n), 0, n - 1);
 
-/** Sticky stepper: resists fast flicks so one swipe rarely skips a part. */
+/**
+ * Sticky stepper for multi-part chapters.
+ * Advances at most one part at a time, with a short cooldown so a mobile flick
+ * cannot skip several parts in one gesture.
+ */
 function makeStepper(n) {
   let cur = 0;
+  let lockedUntil = 0;
+  const advanceAt = 0.88;
+  const retreatAt = 0.12;
+  const cooldownMs = () => (window.matchMedia("(pointer: coarse)").matches ? 520 : 280);
+
   return (p) => {
+    const now = performance.now();
+    if (now < lockedUntil) return cur;
+
     const raw = clamp(p, 0, 0.999999) * n;
     const ideal = clamp(Math.floor(raw), 0, n - 1);
-    if (ideal > cur) {
-      while (cur < ideal && raw >= cur + 0.78) cur += 1;
-    } else if (ideal < cur) {
-      while (cur > ideal && raw <= cur + 0.22) cur -= 1;
+
+    if (ideal > cur && raw >= cur + advanceAt) {
+      cur = Math.min(n - 1, cur + 1);
+      lockedUntil = now + cooldownMs();
+    } else if (ideal < cur && raw <= cur + retreatAt) {
+      cur = Math.max(0, cur - 1);
+      lockedUntil = now + cooldownMs();
     }
-    return clamp(cur, 0, n - 1);
+    return cur;
   };
 }
 
@@ -362,7 +377,8 @@ function initEight(el) {
   });
   const cue = el.querySelector("#step-06");
   return (p) => {
-    const n = clamp(Math.round(p * 9), 1, 8);
+    const eased = smoothstep(p);
+    const n = clamp(Math.round(eased * 8.2), 1, 8);
     setStepCue(cue, n, 8, n < 8 ? `Group ${n} of 8` : `Part complete · 8+ groups`);
     nodes.forEach((v, i) => {
       v.classList.toggle("is-on", i < n);
@@ -396,7 +412,8 @@ function initCap(el) {
   const bars = [...rest.querySelectorAll("i")];
   const cue = el.querySelector("#step-07");
   return (p) => {
-    const grow = clamp(p / 0.4, 0, 1);
+    const eased = smoothstep(p);
+    const grow = clamp(eased / 0.45, 0, 1);
     const shown = Math.round(grow * 25);
     one.style.width = `${shown}%`;
     one.textContent = shown >= 10 ? "Group 1 · 25% max" : shown > 0 ? "Group 1" : "";
@@ -412,7 +429,7 @@ function initCap(el) {
     tiles[0].classList.toggle("is-focus", shown > 0);
     tiles[0].classList.toggle("is-capped", capped);
     const others = capped
-      ? clamp(Math.round(((p - 0.4) / 0.6) * bars.length), 0, bars.length)
+      ? clamp(Math.round(((eased - 0.45) / 0.55) * bars.length), 0, bars.length)
       : 0;
     bars.forEach((b, i) => b.classList.toggle("is-on", i < others));
     tiles.forEach((t, i) => {

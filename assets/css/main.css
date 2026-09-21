@@ -43,7 +43,10 @@ body {
   font-size: 0.95rem;
   line-height: 1.4;
   overflow-x: hidden;
+  overscroll-behavior-y: none;
+  touch-action: pan-y;
   -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Lock page behind detail / source drawers */
