@@ -139,24 +139,72 @@
   padding: 0 0.5rem;
 }
 
-/* Story panes : swap states inside one sticky act */
+/* Story panes : crossfade between parts inside one sticky act */
 .story {
   width: 100%;
   position: relative;
   min-height: 14rem;
+  display: grid;
+  align-items: start;
 }
 .story__pane {
-  display: none;
+  grid-area: 1 / 1;
+  display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
+  align-content: start;
   gap: 0.7rem;
   width: 100%;
-  animation: fadeIn 0.35s var(--ease);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate3d(0, 12px, 0);
+  transition:
+    opacity 0.5s var(--ease),
+    transform 0.5s var(--ease),
+    visibility 0.5s;
+  will-change: opacity, transform;
 }
-.story__pane.is-on { display: grid; }
-@keyframes fadeIn {
-  from { opacity: 0.35; transform: translateY(6px); }
-  to { opacity: 1; transform: none; }
+.story__pane.is-on {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate3d(0, 0, 0);
+  z-index: 1;
+}
+.story__pane.is-leaving {
+  z-index: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .story__pane {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* Soft text swaps when part labels change */
+.mid,
+.explain,
+.label,
+.stepcue,
+.big {
+  transition: opacity 0.28s var(--ease), transform 0.28s var(--ease);
+}
+.is-swapping {
+  opacity: 0.28;
+  transform: translate3d(0, 5px, 0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .mid,
+  .explain,
+  .label,
+  .stepcue,
+  .big,
+  .is-swapping {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
 }
 
 /* Newspaper / newsroom */
@@ -615,7 +663,11 @@
   border-color: var(--ink);
 }
 .morph i { font-style: normal; color: var(--mute); }
-.morph.is-on .morph__b { animation: fadeIn 0.4s var(--ease); }
+.morph.is-on .morph__b {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
+}
 
 /* 25% alloc */
 .alloc { width: min(94vw, 28rem); display: grid; gap: 0.4rem; }
@@ -1172,7 +1224,28 @@
   .cat-pill span { font-size: clamp(0.6rem, 2.8vw, 0.66rem); }
   .voice .paper { width: 2.8rem; }
   .cap8__tile span { font-size: 0.52rem; max-width: 3.6rem; }
-  .story { min-height: 10rem; }
+  .story { min-height: 15rem; }
+  .story__pane {
+    transform: translate3d(0, 14px, 0);
+    transition-duration: 0.58s;
+  }
+  .story__pane.is-on { transform: translate3d(0, 0, 0); }
+  .mid,
+  .explain,
+  .label,
+  .stepcue,
+  .big {
+    transition-duration: 0.32s;
+  }
+  .fork__path,
+  .fork__top,
+  .voice,
+  .grid8 .voice,
+  .cap8__tile,
+  .box__row,
+  .chain span {
+    transition-duration: 0.45s;
+  }
   .hud { bottom: 0.85rem; }
   .rail { z-index: 30; }
 }

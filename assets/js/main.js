@@ -139,7 +139,13 @@ function fillPeople(el, n) {
 
 function showPane(root, index) {
   root.querySelectorAll(".story__pane").forEach((p) => {
-    p.classList.toggle("is-on", Number(p.dataset.pane) === index);
+    const on = Number(p.dataset.pane) === index;
+    const wasOn = p.classList.contains("is-on");
+    if (wasOn && !on) {
+      p.classList.add("is-leaving");
+      window.setTimeout(() => p.classList.remove("is-leaving"), 500);
+    }
+    p.classList.toggle("is-on", on);
   });
 }
 
@@ -160,9 +166,28 @@ function makeStepper(n) {
   };
 }
 
+const softTimers = new WeakMap();
+
+function softText(el, text) {
+  if (!el || el.textContent === text) return;
+  if (reduced) {
+    el.textContent = text;
+    return;
+  }
+  const prev = softTimers.get(el);
+  if (prev) window.clearTimeout(prev);
+  el.classList.add("is-swapping");
+  const id = window.setTimeout(() => {
+    el.textContent = text;
+    requestAnimationFrame(() => el.classList.remove("is-swapping"));
+    softTimers.delete(el);
+  }, 140);
+  softTimers.set(el, id);
+}
+
 function setStepCue(el, part, total, label) {
   if (!el) return;
-  el.textContent = label || `Part ${part} of ${total}`;
+  softText(el, label || `Part ${part} of ${total}`);
 }
 
 function initHero(el) {
@@ -251,30 +276,32 @@ function initTimeline(el) {
     deal.classList.toggle("is-broken", s >= 2 && s < 4);
     plat.classList.toggle("platform--alert", s === 2 || s === 3);
     if (s === 0) {
-      year.textContent = "2021";
-      word.textContent = "Bargaining";
-      sub.textContent = "News Media Bargaining Code";
-      ex.textContent = "Platforms and news businesses were pushed to negotiate commercial deals.";
+      softText(year, "2021");
+      softText(word, "Bargaining");
+      softText(sub, "News Media Bargaining Code");
+      softText(ex, "Platforms and news businesses were pushed to negotiate commercial deals.");
     } else if (s === 1) {
-      year.textContent = "2021";
-      word.textContent = "Deals";
-      sub.textContent = "Money started moving";
-      ex.textContent = "Commercial deals were signed. The terms stayed private.";
+      softText(year, "2021");
+      softText(word, "Deals");
+      softText(sub, "Money started moving");
+      softText(ex, "Commercial deals were signed. The terms stayed private.");
     } else if (s === 2) {
-      year.textContent = "2021";
-      word.textContent = "Exit risk";
-      sub.textContent = "What if a platform walks away?";
-      ex.textContent =
-        "If a platform steps back, people can lose a distribution channel, and news organisations can lose reach.";
+      softText(year, "2021");
+      softText(word, "Exit risk");
+      softText(sub, "What if a platform walks away?");
+      softText(
+        ex,
+        "If a platform steps back, people can lose a distribution channel, and news organisations can lose reach."
+      );
     } else if (s === 3) {
-      year.textContent = "Why change?";
-      word.textContent = "Broken link";
-      sub.textContent = "Why create an incentive?";
-      ex.textContent = "Australia needed a stronger incentive for platforms to keep paying for news.";
+      softText(year, "Why change?");
+      softText(word, "Broken link");
+      softText(sub, "Why create an incentive?");
+      softText(ex, "Australia needed a stronger incentive for platforms to keep paying for news.");
     } else {
-      year.textContent = "2026";
-      sub.textContent = "News Bargaining Incentive";
-      ex.textContent = "A new incentive for commercial deals, through a charge on very large platforms.";
+      softText(year, "2026");
+      softText(sub, "News Bargaining Incentive");
+      softText(ex, "A new incentive for commercial deals, through a charge on very large platforms.");
     }
   };
 }
@@ -297,22 +324,24 @@ function initMechanism(el) {
       lastPane = pane;
     }
     if (pane === 0) {
-      head.textContent = "Who does it apply to?";
-      ex.textContent = "Only platforms with more than $250 million in Australian digital ad revenue.";
+      softText(head, "Who does it apply to?");
+      softText(ex, "Only platforms with more than $250 million in Australian digital ad revenue.");
       const local = clamp(p / 0.3, 0, 1);
       const w = 8 + local * 78;
       fill.style.width = `${w}%`;
       if (fillM) fillM.style.height = `${w}%`;
-      v.textContent =
-        w > 62
-          ? "NBI applies above this level."
-          : "Below this level, the charge does not apply.";
+      if (v) {
+        v.textContent =
+          w > 62
+            ? "NBI applies above this level."
+            : "Below this level, the charge does not apply.";
+      }
     } else if (pane === 1) {
-      head.textContent = "What is the charge?";
-      ex.textContent = "A percentage of that Australian digital ad revenue.";
+      softText(head, "What is the charge?");
+      softText(ex, "A percentage of that Australian digital ad revenue.");
     } else {
-      head.textContent = "How can a platform respond?";
-      ex.textContent = "Spend on Australian news, or pay the charge.";
+      softText(head, "How can a platform respond?");
+      softText(ex, "Spend on Australian news, or pay the charge.");
     }
   };
 }
@@ -418,14 +447,17 @@ function initFork(el) {
     pathA.classList.toggle("is-on", s >= 1);
     pathB.classList.toggle("is-on", s >= 2);
     if (s === 0) {
-      ex.textContent =
-        "The system creates a charge. Qualifying news support can offset it. Revenue collected through the charge can also fund news journalism payments.";
+      softText(
+        ex,
+        "The system creates a charge. Qualifying news support can offset it. Revenue collected through the charge can also fund news journalism payments."
+      );
     } else if (s === 1) {
-      ex.textContent =
-        "Path A: qualifying news support can reduce what the platform pays.";
+      softText(ex, "Path A: qualifying news support can reduce what the platform pays.");
     } else {
-      ex.textContent =
-        "Path B: charge that is collected can fund the News Journalism Payments Scheme for eligible participants.";
+      softText(
+        ex,
+        "Path B: charge that is collected can fund the News Journalism Payments Scheme for eligible participants."
+      );
     }
   };
 }
