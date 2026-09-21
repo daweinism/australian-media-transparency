@@ -203,6 +203,32 @@ function softText(el, text) {
 function setStepCue(el, part, total, label) {
   if (!el) return;
   softText(el, label || `Part ${part} of ${total}`);
+  const act = el.closest("[data-act]");
+  if (act) updateRailPart(act.id, part, total);
+}
+
+let railEl = null;
+const ACT_PARTS = {
+  "act-04": { parts: 5 },
+  "act-05": { parts: 3 },
+  "act-06": { meter: true },
+  "act-07": { meter: true },
+  "act-08": { parts: 3 },
+  "act-10": { parts: 2 },
+};
+
+function updateRailPart(actId, part, total) {
+  if (!railEl) return;
+  const link = railEl.querySelector(`[data-id="${actId}"]`);
+  if (!link) return;
+  const dots = link.querySelectorAll(".rail__parts i");
+  if (dots.length) {
+    dots.forEach((d, i) => d.classList.toggle("is-on", i < part));
+  }
+  const meter = link.querySelector(".rail__meter i");
+  if (meter && total > 0) {
+    meter.style.height = `${Math.round((clamp(part, 0, total) / total) * 100)}%`;
+  }
 }
 
 function initHero(el) {
@@ -419,18 +445,25 @@ function initCap(el) {
     one.textContent = shown >= 10 ? "Group 1 · 25% max" : shown > 0 ? "Group 1" : "";
     pct.textContent = `${shown}%`;
     const capped = grow >= 1;
-    setStepCue(
-      cue,
-      shown,
-      25,
-      capped ? "Cap reached · 25%" : `Filling toward 25% · ${shown}%`
-    );
-    lab.textContent = capped ? "One group max 25%" : "One group fills…";
-    tiles[0].classList.toggle("is-focus", shown > 0);
-    tiles[0].classList.toggle("is-capped", capped);
     const others = capped
       ? clamp(Math.round(((eased - 0.45) / 0.55) * bars.length), 0, bars.length)
       : 0;
+    setStepCue(
+      cue,
+      Math.max(1, shown),
+      25,
+      capped ? "Cap reached · 25%" : `Filling toward 25% · ${shown}%`
+    );
+    const meter = railEl?.querySelector('[data-id="act-07"] .rail__meter i');
+    if (meter) {
+      const fill = capped
+        ? 45 + (others / Math.max(bars.length, 1)) * 55
+        : (shown / 25) * 45;
+      meter.style.height = `${Math.round(fill)}%`;
+    }
+    lab.textContent = capped ? "One group max 25%" : "One group fills…";
+    tiles[0].classList.toggle("is-focus", shown > 0);
+    tiles[0].classList.toggle("is-capped", capped);
     bars.forEach((b, i) => b.classList.toggle("is-on", i < others));
     tiles.forEach((t, i) => {
       if (i === 0) return;
@@ -579,12 +612,22 @@ async function main() {
     .join("");
 
   const rail = document.getElementById("rail");
+  railEl = rail;
   const acts = [...document.querySelectorAll("[data-act]")];
   rail.innerHTML = acts
-    .map(
-      (a, i) =>
-        `<a href="#${a.id}" class="rail__link" data-id="${a.id}" data-l="${a.dataset.label || ""}" aria-label="${a.dataset.label || a.id}"><span class="rail__num">${String(i + 1).padStart(2, "0")}</span><span class="rail__dot" aria-hidden="true"></span><span class="rail__label">${a.dataset.label || ""}</span></a>`
-    )
+    .map((a, i) => {
+      const meta = ACT_PARTS[a.id];
+      let extra = "";
+      if (meta?.parts) {
+        extra = `<span class="rail__parts" aria-hidden="true">${Array.from(
+          { length: meta.parts },
+          () => "<i></i>"
+        ).join("")}</span>`;
+      } else if (meta?.meter) {
+        extra = `<span class="rail__meter" aria-hidden="true"><i></i></span>`;
+      }
+      return `<a href="#${a.id}" class="rail__link" data-id="${a.id}" data-l="${a.dataset.label || ""}" aria-label="${a.dataset.label || a.id}"><span class="rail__num">${String(i + 1).padStart(2, "0")}</span><span class="rail__dot" aria-hidden="true"></span>${extra}<span class="rail__label">${a.dataset.label || ""}</span></a>`;
+    })
     .join("");
 
   const engine = new ScrollEngine({ reducedMotion: reduced });

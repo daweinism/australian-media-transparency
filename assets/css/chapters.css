@@ -4,6 +4,10 @@
   position: relative;
   height: var(--len, 150vh);
   isolation: isolate;
+  margin: 0;
+}
+.act + .act {
+  margin-top: -2px; /* kill subpixel seams between sticky chapters */
 }
 .act.is-active {
   z-index: 2;
@@ -98,11 +102,51 @@
   color: var(--euc);
   font-weight: 600;
 }
+@media (max-width: 700px) {
+  .stepcue {
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
+    opacity: 0.9;
+  }
+}
 .glossary {
-  padding: 1.4rem 1rem 1.8rem;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  background: rgba(255, 252, 247, 0.55);
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.glossary--compact {
+  width: min(100%, 22rem);
+  margin: 0.15rem 0 0;
+  text-align: left;
+}
+.glossary--compact summary {
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  border: 1px solid var(--line);
+  background: rgba(255, 252, 247, 0.88);
+  padding: 0.45rem 0.7rem;
+  min-height: 2.4rem;
+}
+.glossary--compact summary::-webkit-details-marker { display: none; }
+.glossary--compact summary::after {
+  content: "↓";
+  opacity: 0.55;
+  font-size: 0.7rem;
+}
+.glossary--compact[open] summary::after { content: "↑"; }
+.glossary--compact .glossary__list {
+  margin: 0.55rem 0 0;
+  padding: 0.7rem 0.75rem;
+  border: 1px solid var(--line);
+  background: rgba(255, 252, 247, 0.92);
+  gap: 0.75rem;
 }
 .glossary__inner {
   max-width: 38rem;
@@ -123,7 +167,7 @@
   margin: 0;
   font-family: var(--font-d);
   font-weight: 500;
-  font-size: clamp(1.05rem, 3.2vw, 1.25rem);
+  font-size: clamp(0.95rem, 2.8vw, 1.1rem);
   letter-spacing: -0.02em;
   color: var(--ink);
   cursor: default;
@@ -131,8 +175,8 @@
 .glossary__item dd {
   margin: 0;
   color: var(--ink-2);
-  font-size: clamp(0.9rem, 2.4vw, 0.98rem);
-  line-height: 1.5;
+  font-size: clamp(0.82rem, 2.2vw, 0.9rem);
+  line-height: 1.45;
   cursor: default;
 }
 .hud {
@@ -1270,13 +1314,45 @@
     max-height: min(68dvh, 20rem);
   }
   /* Keep photo chapters fully covering the viewport while sticky */
-  .act--hero .act__pin,
-  .act--voices .act__pin,
+  .act--hero .act__pin {
+    background:
+      linear-gradient(180deg, rgba(242, 236, 227, 0.88), rgba(242, 236, 227, 0.98)),
+      url("../img/visual-newsroom.jpg") center/cover no-repeat;
+    background-color: var(--paper);
+  }
+  .act--voices .act__pin {
+    background:
+      linear-gradient(180deg, rgba(242, 236, 227, 0.92), rgba(242, 236, 227, 0.98)),
+      url("../img/visual-voices.jpg") center/cover no-repeat;
+    background-color: var(--paper);
+  }
   .act--resources .act__pin,
-  .act--2021 .act__pin,
-  .act--money .act__pin,
-  .act--glass .act__pin,
+  .act--2021 .act__pin {
+    background:
+      linear-gradient(180deg, rgba(242, 236, 227, 0.93), rgba(242, 236, 227, 0.98)),
+      url("../img/visual-newsroom.jpg") center/cover no-repeat;
+    background-color: var(--paper);
+  }
+  .act--money .act__pin {
+    background:
+      linear-gradient(180deg, rgba(242, 236, 227, 0.93), rgba(242, 236, 227, 0.98)),
+      url("../img/visual-money.jpg") center/cover no-repeat;
+    background-color: var(--paper);
+  }
+  .act--glass .act__pin {
+    background:
+      linear-gradient(180deg, rgba(242, 236, 227, 0.93), rgba(242, 236, 227, 0.98)),
+      url("../img/visual-transparency.jpg") center/cover no-repeat;
+    background-color: var(--paper);
+  }
   .act--finale .act__pin {
+    background:
+      linear-gradient(180deg, rgba(242, 236, 227, 0.9), rgba(232, 224, 211, 0.98)),
+      url("../img/visual-regional.jpg") center/cover no-repeat;
+    background-color: var(--paper);
+  }
+  /* Plain chapters match the paper base so transitions do not flash empty gaps */
+  .act:not([class*="act--"]) .act__pin {
     background-color: var(--paper);
   }
 }

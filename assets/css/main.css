@@ -132,7 +132,9 @@ a { color: var(--euc); }
   transform: scale(1.35);
 }
 .rail__num,
-.rail__label { display: none; }
+.rail__label,
+.rail__parts,
+.rail__meter { display: none; }
 .rail__link .rail__label {
   position: absolute;
   left: 0.9rem;
@@ -164,12 +166,12 @@ a { color: var(--euc); }
     flex-direction: column;
     align-items: center;
     gap: 0;
-    padding: 0.45rem 0.32rem 0.45rem 0.38rem;
+    padding: 0.4rem 0.28rem 0.4rem 0.32rem;
     background: rgba(242, 236, 227, 0.94);
     border: 1px solid var(--line);
     border-right: 0;
     border-radius: 0.45rem 0 0 0.45rem;
-    max-height: min(72vh, 22rem);
+    max-height: min(68dvh, 20rem);
     overflow-y: auto;
     overflow-x: hidden;
     scrollbar-width: none;
@@ -180,26 +182,26 @@ a { color: var(--euc); }
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0.1rem 0;
-    min-width: 1.55rem;
+    padding: 0.08rem 0;
+    min-width: 1.45rem;
     min-height: auto;
   }
   .rail__link:not(:last-child)::after {
     content: "";
     width: 1px;
-    height: 0.38rem;
+    height: 0.28rem;
     background: var(--line);
     display: block;
-    margin: 0.06rem 0;
+    margin: 0.04rem 0;
   }
   .rail__num {
     display: block;
     order: -1;
-    font-size: 0.48rem;
-    letter-spacing: 0.05em;
+    font-size: 0.46rem;
+    letter-spacing: 0.04em;
     color: var(--mute);
     line-height: 1;
-    margin-bottom: 0.1rem;
+    margin-bottom: 0.08rem;
     font-variant-numeric: tabular-nums;
   }
   .rail__link.is-on .rail__num {
@@ -207,13 +209,54 @@ a { color: var(--euc); }
     font-weight: 600;
   }
   .rail__dot {
-    width: 0.3rem;
-    height: 0.3rem;
+    width: 0.28rem;
+    height: 0.28rem;
   }
   .rail__link.is-on .rail__dot {
-    transform: scale(1.25);
+    transform: scale(1.2);
   }
   .rail__link .rail__label { display: none !important; }
+
+  /* Compact in-section part ticks: only on the active chapter */
+  .rail__link.is-on .rail__parts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.12rem;
+    margin-top: 0.18rem;
+    padding-top: 0.12rem;
+    border-top: 1px solid var(--line);
+  }
+  .rail__parts i {
+    width: 0.22rem;
+    height: 0.22rem;
+    border-radius: 50%;
+    background: rgba(21, 20, 18, 0.18);
+    display: block;
+  }
+  .rail__parts i.is-on {
+    background: var(--euc);
+  }
+  .rail__link.is-on .rail__meter {
+    display: block;
+    width: 0.2rem;
+    height: 0.9rem;
+    margin-top: 0.18rem;
+    padding-top: 0;
+    border-radius: 0.15rem;
+    background: rgba(21, 20, 18, 0.12);
+    overflow: hidden;
+    position: relative;
+  }
+  .rail__meter i {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 0%;
+    background: var(--euc);
+    transition: height 0.25s var(--ease);
+  }
 }
 
 /* Drawer */
