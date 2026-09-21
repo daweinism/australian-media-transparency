@@ -19,6 +19,9 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+@media (max-width: 767px), (pointer: coarse) {
+  html { scroll-behavior: auto; }
+}
 /* Scale the whole composition on large displays so diagrams keep visual weight */
 @media (min-width: 1500px) { html { font-size: 19px; } }
 @media (min-width: 1900px) { html { font-size: 22px; } }
@@ -41,6 +44,23 @@ body {
   line-height: 1.4;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Lock page behind detail / source drawers */
+html.is-drawer-open,
+html.is-drawer-open body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+body.is-drawer-open {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  right: 0;
+}
+html.is-drawer-open .drawer {
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 img, svg, video { max-width: 100%; display: block; }

@@ -145,6 +145,26 @@ function showPane(root, index) {
 
 const step = (p, n) => clamp(Math.floor(p * n), 0, n - 1);
 
+/** Sticky stepper: resists fast flicks so one swipe rarely skips a part. */
+function makeStepper(n) {
+  let cur = 0;
+  return (p) => {
+    const raw = clamp(p, 0, 0.999999) * n;
+    const ideal = clamp(Math.floor(raw), 0, n - 1);
+    if (ideal > cur) {
+      while (cur < ideal && raw >= cur + 0.78) cur += 1;
+    } else if (ideal < cur) {
+      while (cur > ideal && raw <= cur + 0.22) cur -= 1;
+    }
+    return clamp(cur, 0, n - 1);
+  };
+}
+
+function setStepCue(el, part, total, label) {
+  if (!el) return;
+  el.textContent = label || `Part ${part} of ${total}`;
+}
+
 function initHero(el) {
   const cue = el.querySelector("#cue-01");
   const orient = el.querySelector("#orient-01");
@@ -217,8 +237,11 @@ function initTimeline(el) {
   const year = el.querySelector("#year-04");
   const plat = el.querySelector("#plat-04");
   const morph = el.querySelector("#morph-04");
+  const cue = el.querySelector("#step-04");
+  const next = makeStepper(5);
   return (p) => {
-    const s = step(p, 5);
+    const s = next(p);
+    setStepCue(cue, s + 1, 5);
     const showMorph = s >= 4;
     deal.hidden = showMorph;
     if (morph) {
@@ -263,9 +286,12 @@ function initMechanism(el) {
   const head = el.querySelector("#head-05");
   const ex = el.querySelector("#ex-05");
   const v = el.querySelector("#v-05a");
+  const cue = el.querySelector("#step-05");
+  const next = makeStepper(3);
   let lastPane = -1;
   return (p) => {
-    const pane = step(p, 3);
+    const pane = next(p);
+    setStepCue(cue, pane + 1, 3);
     if (pane !== lastPane) {
       showPane(story, pane);
       lastPane = pane;
@@ -273,7 +299,8 @@ function initMechanism(el) {
     if (pane === 0) {
       head.textContent = "Who does it apply to?";
       ex.textContent = "Only platforms with more than $250 million in Australian digital ad revenue.";
-      const w = 8 + clamp(p / 0.33, 0, 1) * 78;
+      const local = clamp(p / 0.3, 0, 1);
+      const w = 8 + local * 78;
       fill.style.width = `${w}%`;
       if (fillM) fillM.style.height = `${w}%`;
       v.textContent =
@@ -304,8 +331,10 @@ function initEight(el) {
     grid.appendChild(v);
     return v;
   });
+  const cue = el.querySelector("#step-06");
   return (p) => {
     const n = clamp(Math.round(p * 9), 1, 8);
+    setStepCue(cue, n, 8, n < 8 ? `Group ${n} of 8` : `Part complete · 8+ groups`);
     nodes.forEach((v, i) => {
       v.classList.toggle("is-on", i < n);
       v.classList.toggle("is-ghost", i >= n);
@@ -336,6 +365,7 @@ function initCap(el) {
   });
   rest.innerHTML = Array.from({ length: 7 }, (_, i) => `<i title="Group ${i + 2}"></i>`).join("");
   const bars = [...rest.querySelectorAll("i")];
+  const cue = el.querySelector("#step-07");
   return (p) => {
     const grow = clamp(p / 0.4, 0, 1);
     const shown = Math.round(grow * 25);
@@ -343,6 +373,12 @@ function initCap(el) {
     one.textContent = shown >= 10 ? "Group 1 · 25% max" : shown > 0 ? "Group 1" : "";
     pct.textContent = `${shown}%`;
     const capped = grow >= 1;
+    setStepCue(
+      cue,
+      shown,
+      25,
+      capped ? "Cap reached · 25%" : `Filling toward 25% · ${shown}%`
+    );
     lab.textContent = capped ? "One group max 25%" : "One group fills…";
     tiles[0].classList.toggle("is-focus", shown > 0);
     tiles[0].classList.toggle("is-capped", capped);
@@ -372,8 +408,11 @@ function initFork(el) {
   const pathA = fork.querySelector(".fork__path--a");
   const pathB = fork.querySelector(".fork__path--b");
   const ex = el.querySelector("#money-ex");
+  const cue = el.querySelector("#step-08");
+  const next = makeStepper(3);
   return (p) => {
-    const s = step(p, 3);
+    const s = next(p);
+    setStepCue(cue, s + 1, 3);
     top.classList.toggle("is-on", s >= 0);
     fork.classList.toggle("is-split", s >= 1);
     pathA.classList.toggle("is-on", s >= 1);
@@ -420,24 +459,28 @@ function initTransparency(el) {
     ["Verification", "Independently checked"],
   ];
   const chain = [...el.querySelectorAll("#chain-10 span")];
+  const cue = el.querySelector("#step-10");
+  const next = makeStepper(2);
   let lastPane = -1;
   return (p) => {
-    const pane = p < 0.58 ? 0 : 1;
+    const pane = next(p);
+    setStepCue(cue, pane + 1, 2);
     if (pane !== lastPane) {
       showPane(story, pane);
       lastPane = pane;
     }
     if (pane === 0) {
       eye.textContent = "Where did the money go?";
-      const open = clamp((p - 0.08) / 0.12, 0, 1);
+      const local = clamp(p / 0.48, 0, 1);
+      const open = clamp((local - 0.08) / 0.18, 0, 1);
       lid.style.opacity = String(1 - open);
-      const n = clamp(Math.round(((p - 0.2) / 0.35) * rows.length), 0, rows.length);
+      const n = clamp(Math.round(((local - 0.22) / 0.7) * rows.length), 0, rows.length);
       rows.forEach((r, i) => {
         const on = i < n;
         r.classList.toggle("is-on", on);
         r.querySelector("b").textContent = on ? answers[i][1] : "?";
       });
-      if (p < 0.18) {
+      if (local < 0.2) {
         lab.textContent = "Right now, much of this is not public";
         ex.textContent =
           "Publishing the amount helps. Showing how it was calculated makes it easier to check.";

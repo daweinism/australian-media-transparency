@@ -5,6 +5,8 @@ export class SourceSystem {
     this.backdrop = backdrop;
     this.lastFocus = null;
     this.details = {};
+    this._scrollY = 0;
+    this._touchBlock = null;
   }
 
   setDetails(map) {
@@ -64,7 +66,34 @@ export class SourceSystem {
     this._open(d.badge || "Detail", body, d.title);
   }
 
+  _lockPage() {
+    if (document.body.classList.contains("is-drawer-open")) return;
+    this._scrollY = window.scrollY || window.pageYOffset || 0;
+    document.documentElement.classList.add("is-drawer-open");
+    document.body.classList.add("is-drawer-open");
+    document.body.style.top = `-${this._scrollY}px`;
+
+    this._touchBlock = (e) => {
+      if (this.drawer.contains(e.target)) return;
+      e.preventDefault();
+    };
+    document.addEventListener("touchmove", this._touchBlock, { passive: false });
+  }
+
+  _unlockPage() {
+    if (!document.body.classList.contains("is-drawer-open")) return;
+    document.documentElement.classList.remove("is-drawer-open");
+    document.body.classList.remove("is-drawer-open");
+    document.body.style.top = "";
+    if (this._touchBlock) {
+      document.removeEventListener("touchmove", this._touchBlock);
+      this._touchBlock = null;
+    }
+    window.scrollTo(0, this._scrollY || 0);
+  }
+
   _open(badge, body, title) {
+    this._lockPage();
     this.drawer.innerHTML = `
       <button type="button" class="drawer__x interactive-control" data-close aria-label="Close">× Close</button>
       <p class="tag">${esc(badge)}</p>
@@ -85,6 +114,7 @@ export class SourceSystem {
     this.backdrop.classList.remove("is-on");
     this.backdrop.setAttribute("aria-hidden", "true");
     document.querySelectorAll(".cite").forEach((c) => c.setAttribute("aria-expanded", "false"));
+    this._unlockPage();
     this.lastFocus?.focus?.();
   }
 
