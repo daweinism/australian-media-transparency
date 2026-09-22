@@ -474,11 +474,12 @@ function initCap(el) {
     const others = capped
       ? clamp(Math.round(((eased - 0.45) / 0.55) * bars.length), 0, bars.length)
       : 0;
+    const phase = capped ? 2 : 1;
     setStepCue(
       cue,
-      Math.max(1, shown),
-      25,
-      capped ? "Cap reached · 25%" : `Filling toward 25% · ${shown}%`
+      phase,
+      2,
+      capped && others >= bars.length ? "Cap reached · 25% max" : undefined
     );
     lab.textContent = capped ? "One group max 25%" : "One group fills…";
     tiles[0].classList.toggle("is-focus", shown > 0);
