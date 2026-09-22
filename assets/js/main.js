@@ -205,7 +205,7 @@ function setStepCue(el, part, total, label) {
   const frac = `Part ${part} of ${total}`;
   const hint =
     part < total
-      ? "Scroll slowly for next ↓"
+      ? "Scroll slowly"
       : label && !/^Part\b/i.test(label)
         ? label
         : "Section complete";
@@ -431,7 +431,8 @@ function initEight(el) {
   return (p) => {
     const eased = smoothstep(p);
     const n = clamp(Math.round(eased * 8.2), 1, 8);
-    setStepCue(cue, n, 8, n < 8 ? `Group ${n} of 8` : `Part complete · 8+ groups`);
+    const phase = n < 8 ? 1 : 2;
+    setStepCue(cue, phase, 2, n >= 8 ? "8+ groups reached" : undefined);
     nodes.forEach((v, i) => {
       v.classList.toggle("is-on", i < n);
       v.classList.toggle("is-ghost", i >= n);
