@@ -153,15 +153,15 @@ const step = (p, n) => clamp(Math.floor(p * n), 0, n - 1);
 
 /**
  * Sticky stepper for multi-part chapters.
- * Advances at most one part at a time, with a short cooldown so a mobile flick
+ * Advances at most one part at a time, with a cooldown so a mobile flick
  * cannot skip several parts in one gesture.
  */
 function makeStepper(n) {
   let cur = 0;
   let lockedUntil = 0;
-  const advanceAt = 0.88;
-  const retreatAt = 0.12;
-  const cooldownMs = () => (window.matchMedia("(pointer: coarse)").matches ? 520 : 280);
+  const advanceAt = 0.92;
+  const retreatAt = 0.08;
+  const cooldownMs = () => (window.matchMedia("(pointer: coarse)").matches ? 920 : 360);
 
   return (p) => {
     const now = performance.now();
@@ -202,33 +202,59 @@ function softText(el, text) {
 
 function setStepCue(el, part, total, label) {
   if (!el) return;
-  softText(el, label || `Part ${part} of ${total}`);
-  const act = el.closest("[data-act]");
-  if (act) updateRailPart(act.id, part, total);
+  const frac = `Part ${part} of ${total}`;
+  const hint =
+    part < total
+      ? "Scroll slowly for next ↓"
+      : label && !/^Part\b/i.test(label)
+        ? label
+        : "Section complete";
+  const next = `<span class="stepcue__frac">${frac}</span><span class="stepcue__hint">${hint}</span>`;
+  if (el.dataset.frac === frac && el.dataset.hint === hint) return;
+  const changed = el.dataset.frac && el.dataset.frac !== frac;
+  el.dataset.frac = frac;
+  el.dataset.hint = hint;
+  el.classList.toggle("is-complete", part >= total);
+  if (reduced) {
+    el.innerHTML = next;
+    return;
+  }
+  el.classList.add("is-swapping");
+  window.setTimeout(() => {
+    el.innerHTML = next;
+    el.classList.remove("is-swapping");
+    if (changed) {
+      el.classList.add("is-pulse");
+      window.setTimeout(() => el.classList.remove("is-pulse"), 560);
+    }
+  }, 120);
 }
 
 let railEl = null;
-const ACT_PARTS = {
-  "act-04": { parts: 5 },
-  "act-05": { parts: 3 },
-  "act-06": { meter: true },
-  "act-07": { meter: true },
-  "act-08": { parts: 3 },
-  "act-10": { parts: 2 },
-};
+let railActIds = [];
 
-function updateRailPart(actId, part, total) {
+function updateRailFill(actId, progress) {
   if (!railEl) return;
   const link = railEl.querySelector(`[data-id="${actId}"]`);
-  if (!link) return;
-  const dots = link.querySelectorAll(".rail__parts i");
-  if (dots.length) {
-    dots.forEach((d, i) => d.classList.toggle("is-on", i < part));
-  }
-  const meter = link.querySelector(".rail__meter i");
-  if (meter && total > 0) {
-    meter.style.height = `${Math.round((clamp(part, 0, total) / total) * 100)}%`;
-  }
+  const fill = link?.querySelector(".rail__meter i");
+  if (!fill || link.classList.contains("is-done")) return;
+  fill.style.height = `${Math.round(clamp(progress, 0, 1) * 100)}%`;
+}
+
+function syncRailState(activeId) {
+  if (!railEl) return;
+  const idx = railActIds.indexOf(activeId);
+  railEl.querySelectorAll(".rail__link").forEach((a) => {
+    const i = railActIds.indexOf(a.dataset.id);
+    const on = a.dataset.id === activeId;
+    const done = idx >= 0 && i >= 0 && i < idx;
+    a.classList.toggle("is-on", on);
+    a.classList.toggle("is-done", done);
+    const fill = a.querySelector(".rail__meter i");
+    if (!fill) return;
+    if (done) fill.style.height = "100%";
+    else if (!on && i > idx) fill.style.height = "0%";
+  });
 }
 
 function initHero(el) {
@@ -454,13 +480,6 @@ function initCap(el) {
       25,
       capped ? "Cap reached · 25%" : `Filling toward 25% · ${shown}%`
     );
-    const meter = railEl?.querySelector('[data-id="act-07"] .rail__meter i');
-    if (meter) {
-      const fill = capped
-        ? 45 + (others / Math.max(bars.length, 1)) * 55
-        : (shown / 25) * 45;
-      meter.style.height = `${Math.round(fill)}%`;
-    }
     lab.textContent = capped ? "One group max 25%" : "One group fills…";
     tiles[0].classList.toggle("is-focus", shown > 0);
     tiles[0].classList.toggle("is-capped", capped);
@@ -614,26 +633,16 @@ async function main() {
   const rail = document.getElementById("rail");
   railEl = rail;
   const acts = [...document.querySelectorAll("[data-act]")];
+  railActIds = acts.map((a) => a.id);
   rail.innerHTML = acts
-    .map((a, i) => {
-      const meta = ACT_PARTS[a.id];
-      let extra = "";
-      if (meta?.parts) {
-        extra = `<span class="rail__parts" aria-hidden="true">${Array.from(
-          { length: meta.parts },
-          () => "<i></i>"
-        ).join("")}</span>`;
-      } else if (meta?.meter) {
-        extra = `<span class="rail__meter" aria-hidden="true"><i></i></span>`;
-      }
-      return `<a href="#${a.id}" class="rail__link" data-id="${a.id}" data-l="${a.dataset.label || ""}" aria-label="${a.dataset.label || a.id}"><span class="rail__num">${String(i + 1).padStart(2, "0")}</span><span class="rail__dot" aria-hidden="true"></span>${extra}<span class="rail__label">${a.dataset.label || ""}</span></a>`;
-    })
+    .map(
+      (a, i) =>
+        `<a href="#${a.id}" class="rail__link" data-id="${a.id}" data-l="${a.dataset.label || ""}" aria-label="${a.dataset.label || a.id}"><span class="rail__num">${String(i + 1).padStart(2, "0")}</span><span class="rail__dot" aria-hidden="true"></span><span class="rail__meter" aria-hidden="true"><i></i></span><span class="rail__label">${a.dataset.label || ""}</span></a>`
+    )
     .join("");
 
   const engine = new ScrollEngine({ reducedMotion: reduced });
-  engine.onAct((id) => {
-    rail.querySelectorAll("a").forEach((a) => a.classList.toggle("is-on", a.dataset.id === id));
-  });
+  engine.onAct((id) => syncRailState(id));
 
   const map = [
     ["act-01", initHero],
@@ -651,7 +660,12 @@ async function main() {
 
   map.forEach(([id, fn]) => {
     const el = document.getElementById(id);
-    if (el) engine.register(id, el, fn(el));
+    if (!el) return;
+    const handler = fn(el);
+    engine.register(id, el, (p) => {
+      updateRailFill(id, p);
+      if (handler) handler(p);
+    });
   });
 
   engine.start();
